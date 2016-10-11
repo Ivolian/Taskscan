@@ -20,6 +20,7 @@ public class LoginActivity extends ButterKnifeActivity {
 
     @Override
     protected void init() {
+        initAccount();
         initLoginButton();
     }
 
@@ -32,7 +33,9 @@ public class LoginActivity extends ButterKnifeActivity {
 
     private void login() {
         if (checkUser(getAccount(), getPwd())) {
-            ToastUtils.show("登录成功");
+            TinyDB tinyDB = TinyDB.getNewInstance();
+            tinyDB.putString(Constant.K_ACCOUNT, getAccount());
+            startActivityAndFinish(MainActivity.class);
         } else {
             ToastUtils.show("账户或密码错误");
         }
@@ -58,6 +61,12 @@ public class LoginActivity extends ButterKnifeActivity {
 
     @BindView(R.id.btnLogin)
     TextView btnLogin;
+
+    private void initAccount() {
+        TinyDB tinyDB = TinyDB.getNewInstance();
+        String account = tinyDB.getString(Constant.K_ACCOUNT);
+        metAccount.setText(account);
+    }
 
     private void initLoginButton() {
         btnLogin.setBackground(getLoginButtonBackground());
