@@ -65,16 +65,17 @@ public class MainActivity extends ButterKnifeActivity {
                 .where(RecordDao.Properties.Account.eq(ConfigUtils.getAccount()))
                 .unique();
         if (record == null) {
-            // 创建记录
             record = new Record();
             record.setAccount(ConfigUtils.getAccount());
             record.setTeamNo(teamNo);
+            record.setLineNo(teamNo.substring(0, 2));
             record.setDepartTime(new Date().getTime());
             recordDao.insert(record);
+            ToastUtils.show("出发扫码成功");
         } else {
-            // 更新出发时间
             record.setDepartTime(new Date().getTime());
             recordDao.update(record);
+            ToastUtils.show("出发扫码已更新");
         }
     }
 
@@ -84,7 +85,7 @@ public class MainActivity extends ButterKnifeActivity {
                 .where(RecordDao.Properties.Account.eq(ConfigUtils.getAccount()))
                 .unique();
         if (record == null) {
-            ToastUtils.show("请先出发扫码");
+            ToastUtils.show("尚未出发扫码");
             return;
         }
 
@@ -93,6 +94,7 @@ public class MainActivity extends ButterKnifeActivity {
         record.setDiff(arriveTime - record.getDepartTime());
         recordDao.update(record);
 
+        ToastUtils.show("到达扫码成功");
         printRecord(record);
     }
 

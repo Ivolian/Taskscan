@@ -19,6 +19,10 @@ public class Record {
     @NotNull
     private String teamNo;
 
+    // 线路编号
+    @NotNull
+    private String lineNo;
+
     // 出发时间
     @NotNull
     private Long departTime;
@@ -29,12 +33,14 @@ public class Record {
     // 成绩时间：(到达时间-出发时间)
     private Long diff;
 
-    @Generated(hash = 1607377318)
+    @Generated(hash = 2050397800)
     public Record(Long id, @NotNull String account, @NotNull String teamNo,
-            @NotNull Long departTime, Long arriveTime, Long diff) {
+            @NotNull String lineNo, @NotNull Long departTime, Long arriveTime,
+            Long diff) {
         this.id = id;
         this.account = account;
         this.teamNo = teamNo;
+        this.lineNo = lineNo;
         this.departTime = departTime;
         this.arriveTime = arriveTime;
         this.diff = diff;
@@ -68,6 +74,14 @@ public class Record {
         this.teamNo = teamNo;
     }
 
+    public String getLineNo() {
+        return this.lineNo;
+    }
+
+    public void setLineNo(String lineNo) {
+        this.lineNo = lineNo;
+    }
+
     public Long getDepartTime() {
         return this.departTime;
     }
@@ -91,6 +105,7 @@ public class Record {
     public void setDiff(Long diff) {
         this.diff = diff;
     }
+
 
 
 
