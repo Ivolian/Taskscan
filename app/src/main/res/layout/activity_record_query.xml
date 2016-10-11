@@ -1,17 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@color/colorPrimary"
-        android:gravity="center"
-        android:text="成绩查询"
-        android:textColor="@color/md_white"
-        android:textSize="18dp" />
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:id="@+id/back"
+            android:layout_width="48dp"
+            android:layout_height="48dp">
+
+            <com.mikepenz.iconics.view.IconicsImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_gravity="center"
+                app:iiv_color="@color/md_white"
+                app:iiv_icon="ion-ios-arrow-left" />
+
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="48dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="成绩查询"
+            android:textColor="@color/md_white"
+            android:textSize="18dp" />
+
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -43,8 +69,7 @@
                     android:layout_marginTop="4dp"
                     android:text="出发扫码"
                     android:textColor="@color/md_black"
-                    android:textSize="15dp"
-                    />
+                    android:textSize="15dp" />
 
             </LinearLayout>
 
@@ -67,8 +92,7 @@
                     android:layout_marginTop="4dp"
                     android:text="到达扫码"
                     android:textColor="@color/md_black"
-                    android:textSize="15dp"
-                    />
+                    android:textSize="15dp" />
 
             </LinearLayout>
 
@@ -99,8 +123,7 @@
                     android:layout_marginTop="4dp"
                     android:text="扫码上传"
                     android:textColor="@color/md_black"
-                    android:textSize="15dp"
-                    />
+                    android:textSize="15dp" />
 
             </LinearLayout>
 
@@ -123,8 +146,7 @@
                     android:layout_marginTop="4dp"
                     android:text="成绩查询"
                     android:textColor="@color/md_black"
-                    android:textSize="15dp"
-                    />
+                    android:textSize="15dp" />
 
             </LinearLayout>
 

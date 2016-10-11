@@ -2,13 +2,19 @@ package com.unicorn.taskscan;
 
 import com.unicorn.taskscan.base.ButterKnifeActivity;
 
+import butterknife.OnClick;
+
 public class RecordQueryActivity extends ButterKnifeActivity {
 
     @Override
     protected int getLayoutResID() {
-        return 0;
+        return R.layout.activity_record_query;
     }
 
+    @OnClick(R.id.back)
+    public void backOnClick(){
+        finish();
+    }
 
         //
 //    三个条件：

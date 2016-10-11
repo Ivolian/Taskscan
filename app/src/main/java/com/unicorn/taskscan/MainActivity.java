@@ -19,24 +19,35 @@ public class MainActivity extends ButterKnifeActivity {
         return R.layout.activity_main;
     }
 
+    @OnClick(R.id.queryRecord)
+    public void queryRecordOnClick() {
+        startActivity(RecordQueryActivity.class);
+    }
+
     boolean isDepartScan;
 
     @OnClick(R.id.departScan)
     public void departScanOnClick() {
-        new IntentIntegrator(this).initiateScan();
+        scan();
         isDepartScan = true;
     }
 
     @OnClick(R.id.arriveScan)
     public void arriveScanOnClick() {
-        new IntentIntegrator(this).initiateScan();
+        scan();
         isDepartScan = false;
+    }
+
+    private void scan() {
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.setOrientationLocked(false);
+        integrator.initiateScan();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if (result != null) {
+        if (result != null && result.getContents() != null) {
             String teamNo = result.getContents();
             if (isDepartScan) {
                 onDepartScanFinish(teamNo);

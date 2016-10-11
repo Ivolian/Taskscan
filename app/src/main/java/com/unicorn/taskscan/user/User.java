@@ -3,6 +3,7 @@ package com.unicorn.taskscan.user;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.NotNull;
 
 @Entity
 public class User {
@@ -10,12 +11,14 @@ public class User {
     @Id(autoincrement = true)
     private Long id;
 
+    @NotNull
     private String account;
 
+    @NotNull
     private String pwd;
 
-    @Generated(hash = 1061540729)
-    public User(Long id, String account, String pwd) {
+    @Generated(hash = 289850843)
+    public User(Long id, @NotNull String account, @NotNull String pwd) {
         this.id = id;
         this.account = account;
         this.pwd = pwd;

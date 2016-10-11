@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.rengwuxian.materialedittext.MaterialEditText;
 import com.unicorn.taskscan.base.ButterKnifeActivity;
 import com.unicorn.taskscan.user.User;
+import com.unicorn.taskscan.user.UserDao;
 import com.unicorn.taskscan.utils.ConfigUtils;
 import com.unicorn.taskscan.utils.Constant;
 import com.unicorn.taskscan.utils.TinyDB;
