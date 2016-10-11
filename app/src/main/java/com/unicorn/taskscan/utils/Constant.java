@@ -1,4 +1,4 @@
-package com.unicorn.taskscan;
+package com.unicorn.taskscan.utils;
 
 public class Constant {
 

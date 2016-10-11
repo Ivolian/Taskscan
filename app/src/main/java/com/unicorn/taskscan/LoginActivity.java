@@ -7,6 +7,11 @@ import android.widget.TextView;
 
 import com.rengwuxian.materialedittext.MaterialEditText;
 import com.unicorn.taskscan.base.ButterKnifeActivity;
+import com.unicorn.taskscan.user.User;
+import com.unicorn.taskscan.utils.ConfigUtils;
+import com.unicorn.taskscan.utils.Constant;
+import com.unicorn.taskscan.utils.TinyDB;
+import com.unicorn.taskscan.utils.ToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -63,9 +68,7 @@ public class LoginActivity extends ButterKnifeActivity {
     TextView btnLogin;
 
     private void initAccount() {
-        TinyDB tinyDB = TinyDB.getNewInstance();
-        String account = tinyDB.getString(Constant.K_ACCOUNT);
-        metAccount.setText(account);
+        metAccount.setText(ConfigUtils.getAccount());
     }
 
     private void initLoginButton() {

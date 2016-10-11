@@ -3,6 +3,8 @@ package com.unicorn.taskscan;
 import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.unicorn.taskscan.user.UserHelper;
+
 
 public class SimpleApplication extends Application {
 

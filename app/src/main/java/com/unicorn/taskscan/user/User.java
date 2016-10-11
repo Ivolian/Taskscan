@@ -1,4 +1,4 @@
-package com.unicorn.taskscan;
+package com.unicorn.taskscan.user;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;

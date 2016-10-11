@@ -1,4 +1,7 @@
-package com.unicorn.taskscan;
+package com.unicorn.taskscan.user;
+
+import com.unicorn.taskscan.SimpleApplication;
+import com.unicorn.taskscan.UserDao;
 
 import java.util.ArrayList;
 import java.util.List;

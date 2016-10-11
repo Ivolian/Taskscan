@@ -1,7 +1,9 @@
-package com.unicorn.taskscan;
+package com.unicorn.taskscan.utils;
 
 import android.view.Gravity;
 import android.widget.Toast;
+
+import com.unicorn.taskscan.SimpleApplication;
 
 
 public class ToastUtils {

@@ -9,7 +9,7 @@
         android:layout_height="48dp"
         android:background="@color/colorPrimary"
         android:gravity="center"
-        android:text="操作菜单"
+        android:text="成绩查询"
         android:textColor="@color/md_white"
         android:textSize="18dp" />
 

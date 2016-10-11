@@ -1,4 +1,4 @@
-package com.unicorn.taskscan;
+package com.unicorn.taskscan.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -9,6 +9,8 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 
+
+import com.unicorn.taskscan.SimpleApplication;
 
 import java.io.File;
 import java.io.FileOutputStream;
