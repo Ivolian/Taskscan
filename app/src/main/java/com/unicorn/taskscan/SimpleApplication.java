@@ -5,6 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.unicorn.taskscan.user.UserHelper;
 
+import net.danlew.android.joda.JodaTimeAndroid;
+
 
 public class SimpleApplication extends Application {
 
@@ -28,6 +30,7 @@ public class SimpleApplication extends Application {
     }
 
     private void init() {
+        JodaTimeAndroid.init(instance);
         initGreenDao();
         UserHelper.initIfNeed();
     }
@@ -38,7 +41,7 @@ public class SimpleApplication extends Application {
     private DaoSession daoSession;
 
     private void initGreenDao() {
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "taskscan-db", null);
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(instance, "taskscan-db", null);
         SQLiteDatabase db = helper.getWritableDatabase();
         DaoMaster daoMaster = new DaoMaster(db);
         daoSession = daoMaster.newSession();

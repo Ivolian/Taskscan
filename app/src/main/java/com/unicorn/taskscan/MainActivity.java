@@ -95,24 +95,8 @@ public class MainActivity extends ButterKnifeActivity {
         recordDao.update(record);
 
         ToastUtils.show("到达扫码成功");
-        printRecord(record);
+        RecordHelper.print(record);
     }
 
-    /*
-    打印格式：
-    队伍编号：
-    出发时间：
-    结束时间：
-    总计耗时：
-     */
-    private void printRecord(Record record) {
-        // todo
-    }
-
-    /*
-    hour = time / 3600;
-minute = time / 60 % 60;
-second = time % 60;
-     */
 
 }

@@ -1,15 +1,14 @@
 package com.unicorn.taskscan;
 
+import android.content.Intent;
 import android.widget.ArrayAdapter;
 
 import com.rengwuxian.materialedittext.MaterialEditText;
 import com.unicorn.taskscan.base.ButterKnifeActivity;
+import com.unicorn.taskscan.utils.Constant;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
-import org.greenrobot.greendao.query.QueryBuilder;
-
 import java.util.Arrays;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -33,40 +32,26 @@ public class RecordQueryActivity extends ButterKnifeActivity {
 
     @OnClick(R.id.btnQuery)
     public void btnQueryOnClick() {
-        RecordDao recordDao = SimpleApplication.getDaoSession().getRecordDao();
-        QueryBuilder<Record> queryBuilder = recordDao.queryBuilder();
-        String teamNo = getTeamNo();
-        if (!teamNo.equals("")) {
-            queryBuilder.where(RecordDao.Properties.TeamNo.eq(teamNo));
-        }
-        String lineNo = getLineNo();
-        if (!lineNo.equals("")) {
-            queryBuilder.where(RecordDao.Properties.LineNo.like(lineNo));
-        }
-        if (isArrival()) {
-            queryBuilder.where(RecordDao.Properties.ArriveTime.isNotNull());
-        } else {
-            queryBuilder.where(RecordDao.Properties.ArriveTime.isNull());
-        }
-        List<Record> recordList = queryBuilder.list();
-        // TODO
+        Intent intent = new Intent(this, RecordDisplayActivity.class);
+        intent.putExtra(Constant.K_TEAM_NO, getTeamNo());
+        intent.putExtra(Constant.K_LINE_NO, getLineNo());
+        intent.putExtra(Constant.K_IS_ARRIVAL, isArrival());
+        startActivity(intent);
     }
-
-
-
-    //
-//    三个条件：
-//
-//    线路，匹配编号前面的两个数字，比如输入01就left(编号,2)匹配
-//    是否到达，判断结束时候是否有时间就行
-
 
     @BindView(R.id.metTeamNo)
     MaterialEditText metTeamNo;
 
-
     @BindView(R.id.metLineNo)
     MaterialEditText metLineNo;
+
+    private String getTeamNo() {
+        return metTeamNo.getText().toString().trim();
+    }
+
+    private String getLineNo() {
+        return metLineNo.getText().toString().trim();
+    }
 
     @BindView(R.id.mbsIsArrival)
     MaterialBetterSpinner mbsIsArrival;
@@ -76,14 +61,6 @@ public class RecordQueryActivity extends ButterKnifeActivity {
                 android.R.layout.simple_dropdown_item_1line, Arrays.asList("是", "否"));
         mbsIsArrival.setAdapter(adapter);
         mbsIsArrival.setText("是");
-    }
-
-    private String getTeamNo() {
-        return metTeamNo.getText().toString().trim();
-    }
-
-    private String getLineNo() {
-        return metLineNo.getText().toString().trim();
     }
 
     private boolean isArrival() {
