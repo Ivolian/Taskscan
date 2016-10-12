@@ -4,6 +4,7 @@ import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.unicorn.taskscan.user.UserHelper;
+import com.unicorn.taskscan.volley.SimpleVolley;
 
 import net.danlew.android.joda.JodaTimeAndroid;
 
@@ -27,13 +28,17 @@ public class SimpleApplication extends Application {
         super.onCreate();
         instance = this;
         init();
+        init_();
     }
 
     private void init() {
         JodaTimeAndroid.init(instance);
         SimpleVolley.init(instance);
         initGreenDao();
-        UserHelper.initIfNeed();
+    }
+
+    private void init_() {
+        UserHelper.initUsersIfNeed();
     }
 
 

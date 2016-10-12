@@ -1,4 +1,4 @@
-package com.unicorn.taskscan;
+package com.unicorn.taskscan.volley;
 
 import com.android.volley.NoConnectionError;
 import com.android.volley.ServerError;

@@ -7,15 +7,15 @@ import java.util.List;
 
 public class UserHelper {
 
-    public static void initIfNeed() {
+    public static void initUsersIfNeed() {
         UserDao userDao = SimpleApplication.getDaoSession().getUserDao();
         long count = userDao.count();
         if (count == 0) {
-            userDao.insertInTx(getUserList());
+            userDao.insertInTx(getUsers());
         }
     }
 
-    private static List<User> getUserList() {
+    private static List<User> getUsers() {
         List<User> users = new ArrayList<>();
         users.add(createUser("zuobiao01", "1018"));
         users.add(createUser("zuobiao02", "1007"));
