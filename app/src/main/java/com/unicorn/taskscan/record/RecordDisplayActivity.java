@@ -23,20 +23,15 @@ public class RecordDisplayActivity extends ButterKnifeActivity {
         return R.layout.activity_record_display;
     }
 
-    @OnClick(R.id.back)
-    public void backOnClick() {
-        finish();
-    }
-
     @Override
     protected void init() {
         initRecyclerView();
     }
 
     private void initRecyclerView() {
-        List<Record> recordList = queryRecords();
+        List<Record> records = queryRecords();
         RecordAdapter recordAdapter = new RecordAdapter();
-        recordAdapter.setRecordList(recordList);
+        recordAdapter.setRecords(records);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(recordAdapter);
     }
@@ -44,13 +39,13 @@ public class RecordDisplayActivity extends ButterKnifeActivity {
     private List<Record> queryRecords() {
         RecordDao recordDao = SimpleApplication.getDaoSession().getRecordDao();
         QueryBuilder<Record> queryBuilder = recordDao.queryBuilder();
-        if (!teamNo.equals("")) {
+        if (!teamNo.equals(Constant.EMPTY_STR)) {
             queryBuilder.where(RecordDao.Properties.TeamNo.eq(teamNo));
         }
-        if (!lineNo.equals("")) {
+        if (!lineNo.equals(Constant.EMPTY_STR)) {
             queryBuilder.where(RecordDao.Properties.LineNo.like(lineNo));
         }
-        if (isArrival) {
+        if (isArrival.equals(Constant.ARRIVAL)) {
             queryBuilder.where(RecordDao.Properties.ArriveTime.isNotNull());
         } else {
             queryBuilder.where(RecordDao.Properties.ArriveTime.isNull());
@@ -58,8 +53,8 @@ public class RecordDisplayActivity extends ButterKnifeActivity {
         return queryBuilder.list();
     }
 
-    @BindView(R.id.recyclerView)
-    RecyclerView recyclerView;
+
+    // ==================== 基本无视 ====================
 
     @InjectExtra(Constant.K_TEAM_NO)
     String teamNo;
@@ -68,7 +63,16 @@ public class RecordDisplayActivity extends ButterKnifeActivity {
     String lineNo;
 
     @InjectExtra(Constant.K_IS_ARRIVAL)
-    Boolean isArrival;
+    String isArrival;
+
+    @BindView(R.id.recyclerView)
+    RecyclerView recyclerView;
+
+    @OnClick(R.id.back)
+    public void backOnClick() {
+        finish();
+    }
+
 
 }
 

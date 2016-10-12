@@ -25,10 +25,10 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.ViewHolder
 
     // ================================== data ==================================
 
-    private List<Record> recordList = new ArrayList<>();
+    private List<Record> records = new ArrayList<>();
 
-    public void setRecordList(List<Record> recordList) {
-        this.recordList = recordList;
+    public void setRecords(List<Record> records) {
+        this.records = records;
     }
 
 
@@ -55,7 +55,7 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.ViewHolder
 
         @OnClick(R.id.btnPrint)
         public void btnPrintOnClick() {
-            Record record = recordList.get(getAdapterPosition());
+            Record record = records.get(getAdapterPosition());
             RecordHelper.print(record);
         }
     }
@@ -65,11 +65,10 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        Record record = recordList.get(position);
+        Record record = records.get(position);
         holder.tvTeamNo.setText(record.getTeamNo());
         Long departTime = record.getDepartTime();
         holder.tvDepartTime.setText("出发时间: " + getDateString(departTime));
-
         Long arriveTime = record.getArriveTime();
         if (arriveTime != null) {
             holder.tvArriveTime.setText("到达时间: " + getDateString(arriveTime));
@@ -110,7 +109,7 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return recordList.size();
+        return records.size();
     }
 
 

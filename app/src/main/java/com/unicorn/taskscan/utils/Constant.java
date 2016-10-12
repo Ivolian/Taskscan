@@ -2,6 +2,11 @@ package com.unicorn.taskscan.utils;
 
 public class Constant {
 
+    public static final String EMPTY_STR = "";
+
+    public static final String ARRIVAL = "是";
+
+
     public static final String K_ACCOUNT = "account";
 
     public static final String K_TEAM_NO = "teamno";

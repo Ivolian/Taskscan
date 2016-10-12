@@ -10,6 +10,7 @@ import com.unicorn.taskscan.base.ButterKnifeActivity;
 import com.unicorn.taskscan.user.User;
 import com.unicorn.taskscan.user.UserDao;
 import com.unicorn.taskscan.utils.ConfigUtils;
+import com.unicorn.taskscan.utils.Constant;
 import com.unicorn.taskscan.utils.ToastUtils;
 
 import butterknife.BindView;
@@ -84,12 +85,11 @@ public class LoginActivity extends ButterKnifeActivity {
     }
 
     private boolean isInputValid() {
-        final String empty = "";
-        if (getAccount().equals(empty)) {
+        if (getAccount().equals(Constant.EMPTY_STR)) {
             ToastUtils.show("账号不能为空");
             return false;
         }
-        if (getPwd().equals(empty)) {
+        if (getPwd().equals(Constant.EMPTY_STR)) {
             ToastUtils.show("密码不能为空");
             return false;
         }

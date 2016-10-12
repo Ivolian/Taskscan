@@ -9,6 +9,7 @@ import com.unicorn.taskscan.SimpleApplication;
 import com.unicorn.taskscan.utils.ConfigUtils;
 import com.unicorn.taskscan.utils.Constant;
 import com.unicorn.taskscan.utils.ResponseHelper;
+import com.unicorn.taskscan.utils.ToastUtils;
 import com.unicorn.taskscan.volley.SimpleVolley;
 
 import org.joda.time.DateTime;
@@ -25,6 +26,11 @@ public class RecordHelper {
     }
 
     public static void print(Record record) {
+        if (record.getArriveTime() == null){
+            ToastUtils.show("尚未到达扫码");
+            return;
+        }
+
         // TODO
         //        Intent intent = new Intent();
 //        intent.setAction("com.woyou.aidlservice.IWoyouService");
