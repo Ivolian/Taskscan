@@ -8,11 +8,8 @@ import org.greenrobot.greendao.annotation.Generated;
 @Entity
 public class Record {
 
-    @Id(autoincrement = true)
-    private Long id;
-
     // 操作人
-    @NotNull
+    @Id
     private String account;
 
     // 队伍编号
@@ -30,32 +27,18 @@ public class Record {
     // 到达时间
     private Long arriveTime;
 
-    // 成绩时间：(到达时间-出发时间)
-    private Long diff;
-
-    @Generated(hash = 2050397800)
-    public Record(Long id, @NotNull String account, @NotNull String teamNo,
-            @NotNull String lineNo, @NotNull Long departTime, Long arriveTime,
-            Long diff) {
-        this.id = id;
+    @Generated(hash = 1831206135)
+    public Record(String account, @NotNull String teamNo, @NotNull String lineNo,
+            @NotNull Long departTime, Long arriveTime) {
         this.account = account;
         this.teamNo = teamNo;
         this.lineNo = lineNo;
         this.departTime = departTime;
         this.arriveTime = arriveTime;
-        this.diff = diff;
     }
 
     @Generated(hash = 477726293)
     public Record() {
-    }
-
-    public Long getId() {
-        return this.id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getAccount() {
@@ -97,18 +80,5 @@ public class Record {
     public void setArriveTime(Long arriveTime) {
         this.arriveTime = arriveTime;
     }
-
-    public Long getDiff() {
-        return this.diff;
-    }
-
-    public void setDiff(Long diff) {
-        this.diff = diff;
-    }
-
-
-
-
-   
 
 }

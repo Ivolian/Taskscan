@@ -10,12 +10,11 @@ import com.unicorn.taskscan.base.ButterKnifeActivity;
 import com.unicorn.taskscan.user.User;
 import com.unicorn.taskscan.user.UserDao;
 import com.unicorn.taskscan.utils.ConfigUtils;
-import com.unicorn.taskscan.utils.Constant;
-import com.unicorn.taskscan.utils.TinyDB;
 import com.unicorn.taskscan.utils.ToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+
 
 public class LoginActivity extends ButterKnifeActivity {
 
@@ -30,24 +29,29 @@ public class LoginActivity extends ButterKnifeActivity {
         initLoginButton();
     }
 
+    private void initAccount() {
+        metAccount.setText(ConfigUtils.getAccount());
+    }
+
     @OnClick(R.id.btnLogin)
     public void btnLoginOnClick() {
-        if (checkInput()) {
+        if (isInputValid()) {
             login();
         }
     }
 
     private void login() {
-        if (checkUser(getAccount(), getPwd())) {
-            TinyDB tinyDB = TinyDB.getNewInstance();
-            tinyDB.putString(Constant.K_ACCOUNT, getAccount());
+        final String account = getAccount();
+        final String pwd = getPwd();
+        if (isUserValid(account, pwd)) {
+            ConfigUtils.saveAccount(account);
             startActivityAndFinish(MainActivity.class);
         } else {
             ToastUtils.show("账户或密码错误");
         }
     }
 
-    private boolean checkUser(final String account, final String pwd) {
+    private boolean isUserValid(final String account, final String pwd) {
         UserDao userDao = SimpleApplication.getDaoSession().getUserDao();
         User user = userDao.queryBuilder()
                 .where(UserDao.Properties.Account.eq(account))
@@ -68,10 +72,6 @@ public class LoginActivity extends ButterKnifeActivity {
     @BindView(R.id.btnLogin)
     TextView btnLogin;
 
-    private void initAccount() {
-        metAccount.setText(ConfigUtils.getAccount());
-    }
-
     private void initLoginButton() {
         btnLogin.setBackground(getLoginButtonBackground());
     }
@@ -83,12 +83,13 @@ public class LoginActivity extends ButterKnifeActivity {
         return bg;
     }
 
-    private boolean checkInput() {
-        if (getAccount().equals("")) {
+    private boolean isInputValid() {
+        final String empty = "";
+        if (getAccount().equals(empty)) {
             ToastUtils.show("账号不能为空");
             return false;
         }
-        if (getPwd().equals("")) {
+        if (getPwd().equals(empty)) {
             ToastUtils.show("密码不能为空");
             return false;
         }

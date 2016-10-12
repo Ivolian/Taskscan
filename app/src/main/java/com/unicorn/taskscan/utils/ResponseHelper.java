@@ -1,7 +1,4 @@
-package com.unicorn.taskscan;
-
-import com.unicorn.taskscan.utils.Constant;
-import com.unicorn.taskscan.utils.ToastUtils;
+package com.unicorn.taskscan.utils;
 
 import org.json.JSONObject;
 
@@ -16,10 +13,6 @@ public class ResponseHelper {
             showMsg(responseString);
         }
         return success;
-    }
-
-    public static boolean isWrong(String responseString) throws Exception {
-        return !isRight(responseString);
     }
 
     private static void showMsg(String responseString) throws Exception {

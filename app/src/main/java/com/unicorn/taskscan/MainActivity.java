@@ -11,6 +11,7 @@ import com.google.zxing.integration.android.IntentResult;
 import com.unicorn.taskscan.base.PreparePrint;
 import com.unicorn.taskscan.utils.ConfigUtils;
 import com.unicorn.taskscan.utils.Constant;
+import com.unicorn.taskscan.utils.ResponseHelper;
 import com.unicorn.taskscan.utils.ToastUtils;
 import com.unicorn.taskscan.volley.SimpleVolley;
 
@@ -123,7 +124,7 @@ public class MainActivity extends PreparePrint {
 
         long arriveTime = new Date().getTime();
         record.setArriveTime(arriveTime);
-        record.setDiff(arriveTime - record.getDepartTime());
+//        record.setDiff(arriveTime - record.getDepartTime());
         recordDao.update(record);
 
         ToastUtils.show("到达扫码成功");
