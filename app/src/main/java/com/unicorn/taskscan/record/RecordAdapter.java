@@ -1,10 +1,12 @@
-package com.unicorn.taskscan;
+package com.unicorn.taskscan.record;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.unicorn.taskscan.R;
 
 import org.joda.time.DateTime;
 import org.joda.time.Interval;

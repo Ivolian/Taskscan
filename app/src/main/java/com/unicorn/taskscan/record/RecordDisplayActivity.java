@@ -1,9 +1,11 @@
-package com.unicorn.taskscan;
+package com.unicorn.taskscan.record;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.f2prateek.dart.InjectExtra;
+import com.unicorn.taskscan.R;
+import com.unicorn.taskscan.SimpleApplication;
 import com.unicorn.taskscan.base.ButterKnifeActivity;
 import com.unicorn.taskscan.utils.Constant;
 

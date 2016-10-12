@@ -3,6 +3,8 @@ package com.unicorn.taskscan;
 import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.unicorn.taskscan.record.DaoMaster;
+import com.unicorn.taskscan.record.DaoSession;
 import com.unicorn.taskscan.user.UserHelper;
 import com.unicorn.taskscan.volley.SimpleVolley;
 

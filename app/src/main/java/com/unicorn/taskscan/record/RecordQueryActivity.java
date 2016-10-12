@@ -1,9 +1,10 @@
-package com.unicorn.taskscan;
+package com.unicorn.taskscan.record;
 
 import android.content.Intent;
 import android.widget.ArrayAdapter;
 
 import com.rengwuxian.materialedittext.MaterialEditText;
+import com.unicorn.taskscan.R;
 import com.unicorn.taskscan.base.ButterKnifeActivity;
 import com.unicorn.taskscan.utils.Constant;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;

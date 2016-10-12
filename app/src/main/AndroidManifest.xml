@@ -25,11 +25,11 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".RecordQueryActivity"
+            android:name=".record.RecordQueryActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".RecordDisplayActivity"
+            android:name=".record.RecordDisplayActivity"
             android:screenOrientation="portrait" />
 
         <activity
