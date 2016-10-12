@@ -3,9 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.unicorn.taskscan">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".SimpleApplication"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
 

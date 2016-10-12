@@ -31,6 +31,7 @@ public class SimpleApplication extends Application {
 
     private void init() {
         JodaTimeAndroid.init(instance);
+        SimpleVolley.init(instance);
         initGreenDao();
         UserHelper.initIfNeed();
     }
