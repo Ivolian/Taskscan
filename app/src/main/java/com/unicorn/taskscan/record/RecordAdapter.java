@@ -7,10 +7,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.unicorn.taskscan.R;
-
-import org.joda.time.DateTime;
-import org.joda.time.Interval;
-import org.joda.time.Period;
+import com.unicorn.taskscan.print.WoyouPrinter;
+import com.unicorn.taskscan.utils.DateUtils;
+import com.unicorn.taskscan.utils.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +55,11 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.ViewHolder
         @OnClick(R.id.btnPrint)
         public void btnPrintOnClick() {
             Record record = records.get(getAdapterPosition());
-            RecordHelper.printRecord(record);
+            if (record.getArriveTime() == null) {
+                ToastUtils.show("尚未到达扫码");
+                return;
+            }
+            WoyouPrinter.printRecord(record);
         }
     }
 
@@ -67,37 +70,12 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.ViewHolder
     public void onBindViewHolder(ViewHolder holder, final int position) {
         Record record = records.get(position);
         holder.tvTeamNo.setText(record.getTeamNo());
-        Long departTime = record.getDepartTime();
-        holder.tvDepartTime.setText("出发时间: " + getDateString(departTime));
+        holder.tvDepartTime.setText("出发时间: " + DateUtils.getDateString(record.getDepartTime()));
         Long arriveTime = record.getArriveTime();
         if (arriveTime != null) {
-            holder.tvArriveTime.setText("到达时间: " + getDateString(arriveTime));
-            holder.tvDiff.setText("总计耗时: " + getDiff(departTime, arriveTime));
+            holder.tvArriveTime.setText("到达时间: " + DateUtils.getDateString(arriveTime));
+            holder.tvDiff.setText("总计耗时: " + DateUtils.getDiff(record));
         }
-    }
-
-    private String getDateString(long time) {
-        final String format = "yyyy-MM-dd HH:mm:ss";
-        return new DateTime(time).toString(format);
-    }
-
-    private String getDiff(long departTime, long arriveTime) {
-        Interval interval = new Interval(departTime, arriveTime);
-        Period period = interval.toPeriod();
-        String diff = "";
-        int hour = period.getHours();
-        if (hour != 0) {
-            diff += (hour + "小时");
-        }
-        int minute = period.getMinutes();
-        if (minute != 0) {
-            diff += (minute + "分钟");
-        }
-        int second = period.getSeconds();
-        if (second != 0) {
-            diff += (second + "秒");
-        }
-        return diff;
     }
 
 

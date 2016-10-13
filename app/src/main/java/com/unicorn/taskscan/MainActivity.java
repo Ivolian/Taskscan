@@ -5,6 +5,7 @@ import android.content.Intent;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.unicorn.taskscan.base.ButterKnifeActivity;
+import com.unicorn.taskscan.print.WoyouPrinter;
 import com.unicorn.taskscan.record.Record;
 import com.unicorn.taskscan.record.RecordDao;
 import com.unicorn.taskscan.record.RecordHelper;
@@ -100,7 +101,7 @@ public class MainActivity extends ButterKnifeActivity {
         RecordDao recordDao = SimpleApplication.getDaoSession().getRecordDao();
         recordDao.update(record);
         ToastUtils.show("到达扫码成功");
-        RecordHelper.printRecord(record);
+        WoyouPrinter.printRecord(record);
     }
 
 }

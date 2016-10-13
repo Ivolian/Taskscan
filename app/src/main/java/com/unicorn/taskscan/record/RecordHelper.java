@@ -27,21 +27,6 @@ public class RecordHelper {
                 .unique();
     }
 
-    public static void printRecord(Record record) {
-        if (record.getArriveTime() == null) {
-            ToastUtils.show("尚未到达扫码");
-            return;
-        }
-
-        // TODO
-        //        Intent intent = new Intent();
-//        intent.setAction("com.woyou.aidlservice.IWoyouService");
-//        intent.setPackage("com.woyou.aidlservice");
-//        boolean result = bindService(intent, connection, Context.BIND_AUTO_CREATE);
-
-
-    }
-
 
     // ======================== 上传记录 ========================
 
