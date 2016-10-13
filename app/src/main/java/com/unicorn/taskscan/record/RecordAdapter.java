@@ -56,7 +56,7 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.ViewHolder
         @OnClick(R.id.btnPrint)
         public void btnPrintOnClick() {
             Record record = records.get(getAdapterPosition());
-            RecordHelper.print(record);
+            RecordHelper.printRecord(record);
         }
     }
 

@@ -82,7 +82,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:id="@+id/upload"
+                android:id="@+id/uploadRecord"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"

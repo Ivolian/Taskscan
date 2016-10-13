@@ -23,6 +23,11 @@ public class MainActivity extends ButterKnifeActivity {
         return R.layout.activity_main;
     }
 
+    @OnClick(R.id.uploadRecord)
+    public void uploadRecordOnClick() {
+        RecordHelper.uploadRecord();
+    }
+
     @OnClick(R.id.queryRecord)
     public void queryRecordOnClick() {
         startActivity(RecordQueryActivity.class);
@@ -95,8 +100,7 @@ public class MainActivity extends ButterKnifeActivity {
         RecordDao recordDao = SimpleApplication.getDaoSession().getRecordDao();
         recordDao.update(record);
         ToastUtils.show("到达扫码成功");
-
-        RecordHelper.print(record);
+        RecordHelper.printRecord(record);
     }
 
 }

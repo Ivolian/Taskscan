@@ -15,8 +15,6 @@ public class Constant {
 
     public static final String K_IS_ARRIVAL = "isArrival";
 
-    // 等价于 account
-    public static final String K_USER_NO = "userno";
 
     public static final String K_CODE = "code";
 
@@ -25,5 +23,12 @@ public class Constant {
     public static final String RESPONSE_SUCCESS_CODE = "0";
 
     public static final String K_DATA = "data";
+
+    // 等价于 account
+    public static final String K_USER_NO = "userno";
+    public static final String K_START_TIME = "starttime";
+    public static final String K_SET_TIME = "settime";
+    public static final String K_TIMELINE = "timeline";
+
 
 }
