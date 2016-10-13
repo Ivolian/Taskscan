@@ -28,7 +28,7 @@ public class SimpleVolley {
         getRequestQueue().add(request);
     }
 
-    public static RequestQueue getRequestQueue() {
+    private static RequestQueue getRequestQueue() {
         if (mRequestQueue != null) {
             return mRequestQueue;
         } else {

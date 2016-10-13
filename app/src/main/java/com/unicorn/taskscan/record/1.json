@@ -1,0 +1,30 @@
+{
+  "status": "ok",
+  "code": "0",
+  "msg": null,
+  "data": [
+    {
+      "resultid": "49e2321e-d1a7-4e26-9587-364c5d2957f4",
+      "match_id": null,
+      "userno": "zuobiao01",
+      "teamno": "017001",
+      "starttime": "2016-10-11 15:44:47",
+      "settime": "2016-10-11 15:45:04",
+      "createtime": "2016-10-12 11:11:53",
+      "timeline": "1.4761",
+      "status": "0"
+    },
+    {
+      "userno": "zuobiao02",
+      "teamno": "027002",
+      "starttime": "2016-10-11 15:47:22",
+      "settime": "2016-10-11 18:05:15",
+    },
+    {
+      "userno": "zuobiao02",
+      "teamno": "04107",
+      "starttime": "2016-10-12 18:03:24",
+      "settime": "2016-10-12 18:03:27",
+    }
+  ]
+}

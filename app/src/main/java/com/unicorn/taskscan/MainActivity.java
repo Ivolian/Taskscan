@@ -1,6 +1,8 @@
 package com.unicorn.taskscan;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -34,7 +36,7 @@ public class MainActivity extends ButterKnifeActivity {
         startActivity(RecordQueryActivity.class);
     }
 
-    boolean isDepartScan;
+    private boolean isDepartScan;
 
     @OnClick(R.id.departScan)
     public void departScanOnClick() {
@@ -102,6 +104,19 @@ public class MainActivity extends ButterKnifeActivity {
         recordDao.update(record);
         ToastUtils.show("到达扫码成功");
         WoyouPrinter.printRecord(record);
+    }
+
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        WoyouPrinter.init(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        WoyouPrinter.destroy(this);
     }
 
 }

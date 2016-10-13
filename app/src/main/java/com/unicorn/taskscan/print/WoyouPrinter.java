@@ -18,66 +18,22 @@ import woyou.aidlservice.jiuiv5.IWoyouService;
 public class WoyouPrinter {
 
     private static IWoyouService woyouService = null;
-    private static ServiceConnection connection = new ServiceConnection() {
+
+    private static final ServiceConnection connection = new ServiceConnection() {
         @Override
         public void onServiceDisconnected(ComponentName name) {
             woyouService = null;
+            ToastUtils.show("已断开打印服务");
         }
 
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             woyouService = IWoyouService.Stub.asInterface(service);
-            try {
-                ToastUtils.show(woyouService.getServiceVersion());
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-//            ToastUtils.show("已连接服务");
+            ToastUtils.show("成功连接打印服务");
         }
     };
 
-    public static void init(Context context) {
-        Intent intent = new Intent();
-        intent.setPackage("woyou.aidlservice.jiuiv5");
-        intent.setAction("woyou.aidlservice.jiuiv5.IWoyouService");
-        context.startService(intent);
-        context.bindService(intent, connection, Context.BIND_AUTO_CREATE);
-    }
-
-    public static void destroyPrinter(Context context) {
-        context.unbindService(connection);
-    }
-
-
-    public static void printRecord(final Record record) {
-        if (woyouService == null) {
-            ToastUtils.show("尚未连接打印服务");
-            return;
-        }
-        if (record == null || record.getArriveTime() == null) {
-            return;
-        }
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    woyouService.setFontSize(24, callback);
-                    woyouService.setAlignment(0, callback);
-                    woyouService.printText("队伍编号：" + record.getTeamNo() + "\n", callback);
-                    woyouService.printText("出发时间：" + DateUtils.getDateString(record.getDepartTime()) + "\n", callback);
-                    woyouService.printText("到达时间：" + DateUtils.getDateString(record.getArriveTime()) + "\n", callback);
-                    woyouService.printText("总计耗时：" + DateUtils.getDiff(record) + "\n", callback);
-                    woyouService.lineWrap(4, callback);
-
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-    }
-
-    private static ICallback callback = new ICallback.Stub() {
+    private static final ICallback callback = new ICallback.Stub() {
         @Override
         public void onRunResult(final boolean success) throws RemoteException {
         }
@@ -91,5 +47,45 @@ public class WoyouPrinter {
         }
     };
 
+    public static void init(Context context) {
+        Intent intent = new Intent();
+        intent.setPackage("woyou.aidlservice.jiuiv5");
+        intent.setAction("woyou.aidlservice.jiuiv5.IWoyouService");
+        context.bindService(intent, connection, Context.BIND_AUTO_CREATE);
+    }
+
+    public static void destroy(Context context) {
+        context.unbindService(connection);
+    }
+
+    public static void printRecord(final Record record) {
+        if (woyouService == null) {
+            ToastUtils.show("尚未连接打印服务");
+            return;
+        }
+        if (record == null || record.getArriveTime() == null) {
+            return;
+        }
+        printRecord_(record);
+    }
+
+    private static void printRecord_(final Record record) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    woyouService.setFontSize(24, callback);
+                    woyouService.setAlignment(0, callback);
+                    woyouService.printText("队伍编号：" + record.getTeamNo() + "\n", callback);
+                    woyouService.printText("出发时间：" + DateUtils.getDateString(record.getDepartTime()) + "\n", callback);
+                    woyouService.printText("到达时间：" + DateUtils.getDateString(record.getArriveTime()) + "\n", callback);
+                    woyouService.printText("总计耗时：" + DateUtils.getDiff(record) + "\n", callback);
+                    woyouService.lineWrap(4, callback);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
 
 }

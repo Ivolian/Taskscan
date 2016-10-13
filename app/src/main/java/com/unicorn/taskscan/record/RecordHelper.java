@@ -121,15 +121,15 @@ public class RecordHelper {
             String startTime = item.getString(Constant.K_START_TIME);
             String setTime = item.getString(Constant.K_SET_TIME);
 
-            Record record = new Record();
-            record.setAccount(account);
-            record.setTeamNo(teamNo);
-            record.setLineNo(getLineNo(teamNo));
-            record.setDepartTime(dateStringToTime(startTime));
-            record.setArriveTime(dateStringToTime(setTime));
-
-            RecordDao recordDao = SimpleApplication.getDaoSession().getRecordDao();
-            recordDao.insertOrReplace(record);
+//            Record record = new Record();
+//            record.setAccount(account);
+//            record.setTeamNo(teamNo);
+//            record.setLineNo(getLineNo(teamNo));
+//            record.setDepartTime(dateStringToTime(startTime));
+//            record.setArriveTime(dateStringToTime(setTime));
+//
+//            RecordDao recordDao = SimpleApplication.getDaoSession().getRecordDao();
+//            recordDao.insertOrReplace(record);
         }
     }
 

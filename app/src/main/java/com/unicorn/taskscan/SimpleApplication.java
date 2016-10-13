@@ -3,7 +3,6 @@ package com.unicorn.taskscan;
 import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.unicorn.taskscan.print.WoyouPrinter;
 import com.unicorn.taskscan.record.DaoMaster;
 import com.unicorn.taskscan.record.DaoSession;
 import com.unicorn.taskscan.user.UserHelper;
@@ -38,13 +37,11 @@ public class SimpleApplication extends Application {
         JodaTimeAndroid.init(instance);
         SimpleVolley.init(instance);
         initGreenDao();
-        WoyouPrinter.init(instance);
     }
 
     private void init_() {
         UserHelper.initUsersIfNeed();
     }
-
 
 
     // ======================== GreenDao =========================

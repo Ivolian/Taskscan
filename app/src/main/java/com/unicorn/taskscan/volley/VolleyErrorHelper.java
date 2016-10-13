@@ -6,7 +6,7 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 
 
-public class VolleyErrorHelper {
+ class VolleyErrorHelper {
 
     public static String getErrorMessage(VolleyError volleyError) {
 
