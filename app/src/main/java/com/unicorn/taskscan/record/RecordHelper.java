@@ -18,29 +18,31 @@ import org.joda.time.format.DateTimeFormatter;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RecordHelper {
 
-    public static Record getRecord() {
+    public static Record getRecordByTeamNo(final String teamNo) {
         RecordDao recordDao = SimpleApplication.getDaoSession().getRecordDao();
         return recordDao.queryBuilder()
-                .where(RecordDao.Properties.Account.eq(ConfigUtils.getAccount()))
+                .where(RecordDao.Properties.TeamNo.eq(teamNo))
                 .unique();
     }
 
 
     // ======================== 上传记录 ========================
 
-    public static void uploadRecord() {
-        Record record = getRecord();
-        if (record == null) {
-            ToastUtils.show("尚未出发扫码");
-            return;
+    public static void uploadRecords() {
+        RecordDao recordDao = SimpleApplication.getDaoSession().getRecordDao();
+        List<Record> recordList = recordDao.queryBuilder()
+                .where(RecordDao.Properties.Account.eq(ConfigUtils.getAccount()))
+                .list();
+        if (recordList != null && recordList.size() != 0) {
+            for (Record record : recordList) {
+                uploadRecord(record);
+            }
         }
-        if (record.getArriveTime() == null) {
-            ToastUtils.show("尚未到达扫码");
-            return;
-        }
-        uploadRecord(record);
     }
 
     private static void uploadRecord(Record record) {
@@ -52,7 +54,7 @@ public class RecordHelper {
                     public void onResponse(String response) {
                         try {
                             if (ResponseHelper.isRight(response)) {
-                                downloadRecords();
+                                ToastUtils.show("上传成功");
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -64,27 +66,7 @@ public class RecordHelper {
         SimpleVolley.addRequest(request);
     }
 
-    private static String getUploadRecordUrl(final Record record) {
-        Uri.Builder builder = Uri.parse(ConfigUtils.getBaseUrl() + "/api/uploadresult?").buildUpon();
-        builder.appendQueryParameter(Constant.K_USER_NO, record.getAccount());
-        builder.appendQueryParameter(Constant.K_TEAM_NO, record.getTeamNo());
-        builder.appendQueryParameter(Constant.K_START_TIME, getDateString(record.getDepartTime()));
-        builder.appendQueryParameter(Constant.K_SET_TIME, getDateString(record.getArriveTime()));
-        builder.appendQueryParameter(Constant.K_TIMELINE, getTimeline(record));
-        return builder.toString();
-    }
-
-    private static String getDateString(long time) {
-        final String format = "yyyy-MM-dd HH:mm:ss";
-        return new DateTime(time).toString(format);
-    }
-
-    private static String getTimeline(Record record) {
-        Double result = (record.getArriveTime() - record.getDepartTime()) * 1.d / 3600 / 1000;
-        return result.toString().substring(0, 6);
-    }
-
-    private static void downloadRecords() {
+    public static void downloadRecords() {
         String url = getDownloadRecordsUrl(ConfigUtils.getAccount());
         Request request = new StringRequest(
                 url,
@@ -114,6 +96,7 @@ public class RecordHelper {
     private static void copeDownloadRecordsResponse(String responseString) throws Exception {
         JSONObject response = new JSONObject(responseString);
         JSONArray data = response.getJSONArray(Constant.K_DATA);
+        List<Record> recordList = new ArrayList<>();
         for (int i = 0; i != data.length(); i++) {
             JSONObject item = data.getJSONObject(i);
             String account = item.getString(Constant.K_USER_NO);
@@ -121,16 +104,36 @@ public class RecordHelper {
             String startTime = item.getString(Constant.K_START_TIME);
             String setTime = item.getString(Constant.K_SET_TIME);
 
-//            Record record = new Record();
-//            record.setAccount(account);
-//            record.setTeamNo(teamNo);
-//            record.setLineNo(getLineNo(teamNo));
-//            record.setDepartTime(dateStringToTime(startTime));
-//            record.setArriveTime(dateStringToTime(setTime));
-//
-//            RecordDao recordDao = SimpleApplication.getDaoSession().getRecordDao();
-//            recordDao.insertOrReplace(record);
+            Record record = new Record();
+            record.setTeamNo(teamNo);
+            record.setLineNo(getLineNo(teamNo));
+            record.setAccount(account);
+            record.setDepartTime(dateStringToTime(startTime));
+            record.setArriveTime(dateStringToTime(setTime));
+            recordList.add(record);
         }
+        RecordDao recordDao = SimpleApplication.getDaoSession().getRecordDao();
+        recordDao.insertOrReplaceInTx(recordList);
+    }
+
+    private static String getUploadRecordUrl(final Record record) {
+        Uri.Builder builder = Uri.parse(ConfigUtils.getBaseUrl() + "/api/uploadresult?").buildUpon();
+        builder.appendQueryParameter(Constant.K_USER_NO, record.getAccount());
+        builder.appendQueryParameter(Constant.K_TEAM_NO, record.getTeamNo());
+        builder.appendQueryParameter(Constant.K_START_TIME, getDateString(record.getDepartTime()));
+        builder.appendQueryParameter(Constant.K_SET_TIME, getDateString(record.getArriveTime()));
+        builder.appendQueryParameter(Constant.K_TIMELINE, getTimeline(record));
+        return builder.toString();
+    }
+
+    private static String getDateString(long time) {
+        final String format = "yyyy-MM-dd HH:mm:ss";
+        return new DateTime(time).toString(format);
+    }
+
+    private static String getTimeline(Record record) {
+        Double result = (record.getArriveTime() - record.getDepartTime()) * 1.d / 3600 / 1000;
+        return result.toString().substring(0, 6);
     }
 
     private static String getLineNo(final String teamNo) {

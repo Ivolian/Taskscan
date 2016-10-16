@@ -4,27 +4,48 @@
   "msg": null,
   "data": [
     {
-      "resultid": "49e2321e-d1a7-4e26-9587-364c5d2957f4",
+      "resultid": "6a8778c1-b346-40db-a152-e19475dc9d57",
       "match_id": null,
-      "userno": "zuobiao01",
-      "teamno": "017001",
-      "starttime": "2016-10-11 15:44:47",
-      "settime": "2016-10-11 15:45:04",
-      "createtime": "2016-10-12 11:11:53",
-      "timeline": "1.4761",
-      "status": "0"
-    },
-    {
       "userno": "zuobiao02",
       "teamno": "027002",
       "starttime": "2016-10-11 15:47:22",
       "settime": "2016-10-11 18:05:15",
+      "createtime": "2016-10-12 11:16:19",
+      "timeline": "1.4761",
+      "status": "0"
     },
     {
+      "resultid": "26c984ad-4636-40b7-b422-e89331ca0a60",
+      "match_id": null,
+      "userno": "zuobiao03",
+      "teamno": "04106",
+      "starttime": "2016-10-13 13:56:33",
+      "settime": "2016-10-13 13:58:55",
+      "createtime": "2016-10-13 14:02:41",
+      "timeline": "0.0394",
+      "status": "0"
+    },
+    {
+      "resultid": "b48884dd-7ddd-4ad6-b76b-d7d406b993dd",
+      "match_id": null,
       "userno": "zuobiao02",
       "teamno": "04107",
       "starttime": "2016-10-12 18:03:24",
       "settime": "2016-10-12 18:03:27",
+      "createtime": "2016-10-12 18:49:40",
+      "timeline": "8.0472",
+      "status": "0"
+    },
+    {
+      "resultid": "939bb35e-f60a-4f02-95e0-14b1e68fd5b4",
+      "match_id": null,
+      "userno": "测试",
+      "teamno": "zuobiao01",
+      "starttime": "2016-10-16 14:25:44",
+      "settime": "2016-10-16 14:25:49",
+      "createtime": "2016-10-16 14:27:31",
+      "timeline": "0.0013",
+      "status": "0"
     }
   ]
 }

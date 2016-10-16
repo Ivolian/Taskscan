@@ -28,7 +28,8 @@ public class MainActivity extends ButterKnifeActivity {
 
     @OnClick(R.id.uploadRecord)
     public void uploadRecordOnClick() {
-        RecordHelper.uploadRecord();
+        RecordHelper.uploadRecords();
+        RecordHelper.downloadRecords();
     }
 
     @OnClick(R.id.queryRecord)
@@ -76,9 +77,9 @@ public class MainActivity extends ButterKnifeActivity {
 
     private void onDepartScanFinish(final String teamNo) {
         Record record = new Record();
-        record.setAccount(ConfigUtils.getAccount());
         record.setTeamNo(teamNo);
         record.setLineNo(getLineNo(teamNo));
+        record.setAccount(ConfigUtils.getAccount());
         record.setDepartTime(new Date().getTime());
         RecordDao recordDao = SimpleApplication.getDaoSession().getRecordDao();
         recordDao.insertOrReplace(record);
@@ -90,13 +91,9 @@ public class MainActivity extends ButterKnifeActivity {
     }
 
     private void onArriveScanFinish(final String teamNo) {
-        Record record = RecordHelper.getRecord();
+        Record record = RecordHelper.getRecordByTeamNo(teamNo);
         if (record == null) {
             ToastUtils.show("尚未出发扫码");
-            return;
-        }
-        if (!record.getTeamNo().equals(teamNo)) {
-            ToastUtils.show("与出发扫码不一致");
             return;
         }
         record.setArriveTime(new Date().getTime());

@@ -8,17 +8,17 @@ import org.greenrobot.greendao.annotation.Generated;
 @Entity
 public class Record {
 
-    // 操作人
-    @Id
-    private String account;
-
     // 队伍编号
-    @NotNull
+    @Id
     private String teamNo;
 
     // 线路编号
     @NotNull
     private String lineNo;
+
+    // 操作人
+    @NotNull
+    private String account;
 
     // 出发时间
     @NotNull
@@ -27,12 +27,12 @@ public class Record {
     // 到达时间
     private Long arriveTime;
 
-    @Generated(hash = 1831206135)
-    public Record(String account, @NotNull String teamNo, @NotNull String lineNo,
+    @Generated(hash = 2108704887)
+    public Record(String teamNo, @NotNull String lineNo, @NotNull String account,
             @NotNull Long departTime, Long arriveTime) {
-        this.account = account;
         this.teamNo = teamNo;
         this.lineNo = lineNo;
+        this.account = account;
         this.departTime = departTime;
         this.arriveTime = arriveTime;
     }
