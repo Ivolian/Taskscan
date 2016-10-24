@@ -10,6 +10,7 @@ import com.unicorn.taskscan.base.ButterKnifeActivity;
 import com.unicorn.taskscan.print.WoyouPrinter;
 import com.unicorn.taskscan.record.Record;
 import com.unicorn.taskscan.record.RecordDao;
+import com.unicorn.taskscan.record.RecordDownloader;
 import com.unicorn.taskscan.record.RecordHelper;
 import com.unicorn.taskscan.record.RecordQueryActivity;
 import com.unicorn.taskscan.utils.ConfigUtils;
@@ -26,13 +27,22 @@ public class MainActivity extends ButterKnifeActivity {
         return R.layout.activity_main;
     }
 
-    @OnClick(R.id.uploadRecord)
+    @OnClick(R.id.downloadRecord)
+    public void downloadRecordOnClick(){
+        RecordDownloader recordDownloader = new RecordDownloader(this);
+        recordDownloader.downloadRecord();
+    }
+
+
+
+
+//    @OnClick(R.id.uploadRecord)
     public void uploadRecordOnClick() {
         RecordHelper.uploadRecords();
         RecordHelper.downloadRecords();
     }
 
-    @OnClick(R.id.queryRecord)
+//    @OnClick(R.id.queryRecord)
     public void queryRecordOnClick() {
         startActivity(RecordQueryActivity.class);
     }

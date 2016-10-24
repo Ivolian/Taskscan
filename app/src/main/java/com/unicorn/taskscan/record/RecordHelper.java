@@ -6,6 +6,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
 import com.unicorn.taskscan.SimpleApplication;
+import com.unicorn.taskscan.match.model.Match;
+import com.unicorn.taskscan.team.model.Team;
 import com.unicorn.taskscan.utils.ConfigUtils;
 import com.unicorn.taskscan.utils.Constant;
 import com.unicorn.taskscan.utils.ResponseHelper;
@@ -22,6 +24,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecordHelper {
+
+
+    // ======================== 处理比赛下载 ========================
+
+    public static void saveTeam(final Match match, List<Team> teams){
+
+
+    }
+
+
+
+
+
+
+
 
     public static Record getRecordByTeamNo(final String teamNo) {
         RecordDao recordDao = SimpleApplication.getDaoSession().getRecordDao();

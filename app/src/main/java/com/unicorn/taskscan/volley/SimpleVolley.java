@@ -2,6 +2,7 @@ package com.unicorn.taskscan.volley;
 
 import android.content.Context;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -40,6 +41,16 @@ public class SimpleVolley {
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
+                ToastUtils.show(VolleyErrorHelper.getErrorMessage(volleyError));
+            }
+        };
+    }
+
+    public static Response.ErrorListener getDefaultErrorListener(final MaterialDialog mask) {
+        return new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                mask.dismiss();
                 ToastUtils.show(VolleyErrorHelper.getErrorMessage(volleyError));
             }
         };

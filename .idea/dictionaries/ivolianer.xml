@@ -3,6 +3,8 @@
     <words>
       <w>aidlservice</w>
       <w>downloadresult</w>
+      <w>getscanmatch</w>
+      <w>getscanteam</w>
       <w>jiuiv</w>
       <w>settime</w>
       <w>starttime</w>
