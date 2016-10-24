@@ -13,6 +13,7 @@ import com.unicorn.taskscan.record.RecordCleaner;
 import com.unicorn.taskscan.record.RecordDeparter;
 import com.unicorn.taskscan.record.RecordDownloader;
 import com.unicorn.taskscan.record.RecordQueryActivity;
+import com.unicorn.taskscan.record.RecordSyncer;
 
 import butterknife.OnClick;
 
@@ -55,9 +56,10 @@ public class MainActivity extends ButterKnifeActivity {
         startActivity(RecordQueryActivity.class);
     }
 
-    @OnClick(R.id.uploadRecord)
-    public void uploadRecordOnClick() {
-        // TODO
+    @OnClick(R.id.syncRecord)
+    public void syncRecordOnClick() {
+        RecordSyncer recordSyncer = new RecordSyncer();
+        recordSyncer.sync();
     }
 
 

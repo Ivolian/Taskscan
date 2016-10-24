@@ -2,7 +2,6 @@ package com.unicorn.taskscan.record;
 
 import android.app.Activity;
 
-import com.unicorn.taskscan.SimpleApplication;
 import com.unicorn.taskscan.match.MatchDownloader;
 import com.unicorn.taskscan.utils.ToastUtils;
 
@@ -27,17 +26,17 @@ public class RecordDownloader {
 
     // =================== downloadRecord ===================
 
-    public void downloadRecord(){
+    public void downloadRecord() {
         if (isRecordEmpty()) {
             MatchDownloader matchDownloader = new MatchDownloader(mActivity);
             matchDownloader.downloadMatch();
-        }else {
+        } else {
             ToastUtils.show("已有比赛信息，请清除数据之后再下载");
         }
     }
 
-    private boolean isRecordEmpty(){
-        return SimpleApplication.getDaoSession().getRecordDao().count() == 0;
+    private boolean isRecordEmpty() {
+        return RecordHelper.getRecordDao().count() == 0;
     }
 
 
