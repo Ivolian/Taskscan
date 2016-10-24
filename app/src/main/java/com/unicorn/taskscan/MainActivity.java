@@ -8,16 +8,11 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.unicorn.taskscan.base.ButterKnifeActivity;
 import com.unicorn.taskscan.print.WoyouPrinter;
-import com.unicorn.taskscan.record.Record;
+import com.unicorn.taskscan.record.RecordArriver;
 import com.unicorn.taskscan.record.RecordCleaner;
-import com.unicorn.taskscan.record.RecordDao;
+import com.unicorn.taskscan.record.RecordDeparter;
 import com.unicorn.taskscan.record.RecordDownloader;
-import com.unicorn.taskscan.record.RecordHelper;
 import com.unicorn.taskscan.record.RecordQueryActivity;
-import com.unicorn.taskscan.utils.ConfigUtils;
-import com.unicorn.taskscan.utils.ToastUtils;
-
-import java.util.Date;
 
 import butterknife.OnClick;
 
@@ -55,15 +50,14 @@ public class MainActivity extends ButterKnifeActivity {
         scan();
     }
 
-    //    @OnClick(R.id.uploadRecord)
-    public void uploadRecordOnClick() {
-        RecordHelper.uploadRecords();
-        RecordHelper.downloadRecords();
-    }
-
-    //    @OnClick(R.id.queryRecord)
+    @OnClick(R.id.queryRecord)
     public void queryRecordOnClick() {
         startActivity(RecordQueryActivity.class);
+    }
+
+    @OnClick(R.id.uploadRecord)
+    public void uploadRecordOnClick() {
+        // TODO
     }
 
 
@@ -96,33 +90,17 @@ public class MainActivity extends ButterKnifeActivity {
     }
 
     private void onDepartScanFinish(final String teamNo) {
-        Record record = new Record();
-        record.setTeamNo(teamNo);
-        record.setLineNo(getLineNo(teamNo));
-        record.setAccount(ConfigUtils.getAccount());
-        record.setDepartTime(new Date().getTime());
-        RecordDao recordDao = SimpleApplication.getDaoSession().getRecordDao();
-        recordDao.insertOrReplace(record);
-        ToastUtils.show("出发扫码完成");
-    }
-
-    private String getLineNo(final String teamNo) {
-        return teamNo.substring(0, 2);
+        RecordDeparter recordDeparter = new RecordDeparter();
+        recordDeparter.depart(teamNo);
     }
 
     private void onArriveScanFinish(final String teamNo) {
-        Record record = RecordHelper.getRecordByTeamNo(teamNo);
-        if (record == null) {
-            ToastUtils.show("尚未出发扫码");
-            return;
-        }
-        record.setArriveTime(new Date().getTime());
-        RecordDao recordDao = SimpleApplication.getDaoSession().getRecordDao();
-        recordDao.update(record);
-        ToastUtils.show("到达扫码成功");
-        WoyouPrinter.printRecord(record);
+        RecordArriver recordArriver = new RecordArriver();
+        recordArriver.arrive(teamNo);
     }
 
+
+    // =================== onCreate & onDestroy ===================
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -135,5 +113,6 @@ public class MainActivity extends ButterKnifeActivity {
         super.onDestroy();
         WoyouPrinter.destroy(this);
     }
+
 
 }

@@ -32,8 +32,7 @@ public class RecordHelper {
         for (Team team : teams) {
             records.add(teamToRecord(team));
         }
-        RecordDao recordDao = SimpleApplication.getDaoSession().getRecordDao();
-        recordDao.insertInTx(records);
+        getRecordDao().insertInTx(records);
     }
 
     private static Record teamToRecord(final Team team) {
@@ -50,14 +49,17 @@ public class RecordHelper {
     }
 
 
-
-    // ======================== 处理队伍下载 ========================
+    // ======================== getRecordByTeamNo ========================
 
     public static Record getRecordByTeamNo(final String teamNo) {
-        RecordDao recordDao = SimpleApplication.getDaoSession().getRecordDao();
-        return recordDao.queryBuilder()
-                .where(RecordDao.Properties.TeamNo.eq(teamNo))
-                .unique();
+        return getRecordDao().queryBuilder().where(RecordDao.Properties.TeamNo.eq(teamNo)).unique();
+    }
+
+
+    // ======================== getRecordDao ========================
+
+    public static RecordDao getRecordDao() {
+        return SimpleApplication.getDaoSession().getRecordDao();
     }
 
 
