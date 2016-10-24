@@ -5,10 +5,13 @@
       <w>downloadresult</w>
       <w>getscanmatch</w>
       <w>getscanteam</w>
+      <w>isupt</w>
       <w>jiuiv</w>
       <w>settime</w>
       <w>starttime</w>
       <w>taskscan</w>
+      <w>teamid</w>
+      <w>teamname</w>
       <w>teamno</w>
       <w>uploadresult</w>
       <w>userno</w>

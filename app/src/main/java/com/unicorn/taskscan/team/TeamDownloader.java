@@ -9,7 +9,6 @@ import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.unicorn.taskscan.match.model.Match;
 import com.unicorn.taskscan.record.RecordHelper;
 import com.unicorn.taskscan.team.model.Team;
 import com.unicorn.taskscan.utils.ConfigUtils;
@@ -30,18 +29,15 @@ public class TeamDownloader {
 
     private Activity mActivity;
 
-    private Match match;
-
-    public TeamDownloader(Activity mActivity, Match match) {
+    public TeamDownloader(Activity mActivity) {
         this.mActivity = mActivity;
-        this.match = match;
     }
 
 
     // =================== downloadTeam ===================
 
-    public void downloadTeam() {
-        String url = getDownloadTeamUrl(match.getMatch_id());
+    public void downloadTeam(final String matchId) {
+        String url = getDownloadTeamUrl(matchId);
         final MaterialDialog mask = DialogUtils.showMask(mActivity, "下载队伍信息中");
         Request request = new StringRequest(
                 url,
@@ -80,21 +76,21 @@ public class TeamDownloader {
     }
 
     private void copeTeams(List<Team> teams) throws Exception {
-        RecordHelper.saveTeam(match, teams);
-        showDownloadResult(match, teams);
+        RecordHelper.saveTeam(teams);
+        showTeamDownloadResult(teams);
     }
 
-    private void showDownloadResult(final Match match, final List<Team> teams) {
+    private void showTeamDownloadResult(final List<Team> teams) {
         new MaterialDialog.Builder(mActivity)
                 .title("下载完成")
-                .content(getContent(match, teams))
+                .content(getContent(teams))
                 .positiveText("确认")
                 .show();
     }
 
-    private String getContent(final Match match, final List<Team> teams) {
+    private String getContent(final List<Team> teams) {
         return "比赛名称: "
-                + match.getMatch_name()
+                + teams.get(0).getMatch_name()
                 + "\r\n"
                 + "下载队伍数量: "
                 + teams.size();

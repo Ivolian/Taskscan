@@ -6,7 +6,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
 import com.unicorn.taskscan.SimpleApplication;
-import com.unicorn.taskscan.match.model.Match;
 import com.unicorn.taskscan.team.model.Team;
 import com.unicorn.taskscan.utils.ConfigUtils;
 import com.unicorn.taskscan.utils.Constant;
@@ -26,19 +25,33 @@ import java.util.List;
 public class RecordHelper {
 
 
-    // ======================== 处理比赛下载 ========================
+    // ======================== 下载队伍后 ========================
 
-    public static void saveTeam(final Match match, List<Team> teams){
+    public static void saveTeam(List<Team> teams) {
+        List<Record> records = new ArrayList<>();
+        for (Team team : teams) {
+            records.add(teamToRecord(team));
+        }
+        RecordDao recordDao = SimpleApplication.getDaoSession().getRecordDao();
+        recordDao.insertInTx(records);
+    }
 
-
+    private static Record teamToRecord(final Team team) {
+        Record record = new Record();
+        record.setTeamId(team.getTeamid());
+        record.setTeamName(team.getTeamname());
+        record.setTeamNo(team.getTeamno());
+        record.setLineNo(team.getLine_no());
+        record.setMatchId(team.getMatch_id());
+        record.setMatchName(team.getMatch_name());
+        // 0 表示不需要上传
+        record.setIsupt(0);
+        return record;
     }
 
 
 
-
-
-
-
+    // ======================== 处理队伍下载 ========================
 
     public static Record getRecordByTeamNo(final String teamNo) {
         RecordDao recordDao = SimpleApplication.getDaoSession().getRecordDao();

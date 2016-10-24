@@ -78,7 +78,7 @@ public class MatchDownloader {
 
     private void showMatchSelectDialog(final List<Match> matches) {
         new MaterialDialog.Builder(mActivity)
-                .title("选择比赛")
+                .title("选择需要下载的比赛")
                 .items(getMatchNames(matches))
                 .itemsCallbackSingleChoice(-1, new MaterialDialog.ListCallbackSingleChoice() {
                     @Override
@@ -89,13 +89,13 @@ public class MatchDownloader {
                         return true;
                     }
                 })
-                .positiveText("选择")
+                .positiveText("确认")
                 .show();
     }
 
     private void onMatchSelect(final Match match) {
-        TeamDownloader teamDownloader = new TeamDownloader(mActivity,match);
-        teamDownloader.downloadTeam();
+        TeamDownloader teamDownloader = new TeamDownloader(mActivity);
+        teamDownloader.downloadTeam(match.getMatch_id());
     }
 
     private List<String> getMatchNames(List<Match> matches) {
