@@ -66,6 +66,19 @@ public class RecordHelper {
         SimpleVolley.addRequest(request);
     }
 
+    private static String getUploadRecordUrl(final Record record) {
+        Uri.Builder builder = Uri.parse(ConfigUtils.getBaseUrl() + "/api/uploadresult?").buildUpon();
+        builder.appendQueryParameter(Constant.K_USER_NO, record.getAccount());
+        builder.appendQueryParameter(Constant.K_TEAM_NO, record.getTeamNo());
+        builder.appendQueryParameter(Constant.K_START_TIME, getDateString(record.getDepartTime()));
+        if (record.getArriveTime() != null) {
+            builder.appendQueryParameter(Constant.K_SET_TIME, getDateString(record.getArriveTime()));
+            builder.appendQueryParameter(Constant.K_TIMELINE, getTimeline(record));
+        }
+        return builder.toString();
+    }
+
+
     public static void downloadRecords() {
         String url = getDownloadRecordsUrl(ConfigUtils.getAccount());
         Request request = new StringRequest(
@@ -116,15 +129,6 @@ public class RecordHelper {
         recordDao.insertOrReplaceInTx(recordList);
     }
 
-    private static String getUploadRecordUrl(final Record record) {
-        Uri.Builder builder = Uri.parse(ConfigUtils.getBaseUrl() + "/api/uploadresult?").buildUpon();
-        builder.appendQueryParameter(Constant.K_USER_NO, record.getAccount());
-        builder.appendQueryParameter(Constant.K_TEAM_NO, record.getTeamNo());
-        builder.appendQueryParameter(Constant.K_START_TIME, getDateString(record.getDepartTime()));
-        builder.appendQueryParameter(Constant.K_SET_TIME, getDateString(record.getArriveTime()));
-        builder.appendQueryParameter(Constant.K_TIMELINE, getTimeline(record));
-        return builder.toString();
-    }
 
     private static String getDateString(long time) {
         final String format = "yyyy-MM-dd HH:mm:ss";
@@ -140,7 +144,10 @@ public class RecordHelper {
         return teamNo.substring(0, 2);
     }
 
-    private static long dateStringToTime(String dateString) {
+    private static Long dateStringToTime(String dateString) {
+        if (dateString == null) {
+            return null;
+        }
         DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
         DateTime dateTime = dateTimeFormatter.parseDateTime(dateString);
         return dateTime.getMillis();
