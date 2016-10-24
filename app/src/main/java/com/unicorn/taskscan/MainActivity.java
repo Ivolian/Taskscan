@@ -9,6 +9,7 @@ import com.google.zxing.integration.android.IntentResult;
 import com.unicorn.taskscan.base.ButterKnifeActivity;
 import com.unicorn.taskscan.print.WoyouPrinter;
 import com.unicorn.taskscan.record.Record;
+import com.unicorn.taskscan.record.RecordCleaner;
 import com.unicorn.taskscan.record.RecordDao;
 import com.unicorn.taskscan.record.RecordDownloader;
 import com.unicorn.taskscan.record.RecordHelper;
@@ -27,27 +28,20 @@ public class MainActivity extends ButterKnifeActivity {
         return R.layout.activity_main;
     }
 
+
+    // =================== onClick ===================
+
     @OnClick(R.id.downloadRecord)
-    public void downloadRecordOnClick(){
+    public void downloadRecordOnClick() {
         RecordDownloader recordDownloader = new RecordDownloader(this);
         recordDownloader.downloadRecord();
     }
 
-
-
-
-//    @OnClick(R.id.uploadRecord)
-    public void uploadRecordOnClick() {
-        RecordHelper.uploadRecords();
-        RecordHelper.downloadRecords();
+    @OnClick(R.id.clearRecord)
+    public void clearRecordOnClick() {
+        RecordCleaner recordCleaner = new RecordCleaner(this);
+        recordCleaner.showCleanConfirm();
     }
-
-//    @OnClick(R.id.queryRecord)
-    public void queryRecordOnClick() {
-        startActivity(RecordQueryActivity.class);
-    }
-
-    private boolean isDepartScan;
 
     @OnClick(R.id.departScan)
     public void departScanOnClick() {
@@ -60,6 +54,22 @@ public class MainActivity extends ButterKnifeActivity {
         isDepartScan = false;
         scan();
     }
+
+    //    @OnClick(R.id.uploadRecord)
+    public void uploadRecordOnClick() {
+        RecordHelper.uploadRecords();
+        RecordHelper.downloadRecords();
+    }
+
+    //    @OnClick(R.id.queryRecord)
+    public void queryRecordOnClick() {
+        startActivity(RecordQueryActivity.class);
+    }
+
+
+    // =================== scan ===================
+
+    private boolean isDepartScan;
 
     private void scan() {
         IntentIntegrator integrator = new IntentIntegrator(this);
