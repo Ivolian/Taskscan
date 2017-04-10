@@ -1,22 +1,7 @@
 package com.unicorn.taskscan.record;
 
-import android.net.Uri;
-
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.toolbox.StringRequest;
 import com.unicorn.taskscan.SimpleApplication;
 import com.unicorn.taskscan.team.model.Team;
-import com.unicorn.taskscan.utils.ConfigUtils;
-import com.unicorn.taskscan.utils.Constant;
-import com.unicorn.taskscan.utils.ResponseHelper;
-import com.unicorn.taskscan.volley.SimpleVolley;
-
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +46,14 @@ public class RecordHelper {
         return SimpleApplication.getDaoSession().getRecordDao();
     }
 
-
+    public static List<Record> top10ByLine(final String lineNo) {
+        RecordDao recordDao = SimpleApplication.getDaoSession().getRecordDao();
+        List<Record> records = recordDao.queryBuilder()
+                .where(RecordDao.Properties.LineNo.eq(lineNo))
+                .orderAsc(RecordDao.Properties.UsedTime)
+                .list();
+        return records;
+    }
 
 
 }

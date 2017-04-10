@@ -17,6 +17,7 @@ import com.unicorn.taskscan.record.RecordCleaner;
 import com.unicorn.taskscan.record.RecordDeparter;
 import com.unicorn.taskscan.record.RecordDownloader;
 import com.unicorn.taskscan.record.RecordQueryActivity;
+import com.unicorn.taskscan.record.RecordStatActivity;
 import com.unicorn.taskscan.record.RecordSyncer;
 
 import butterknife.OnClick;
@@ -55,14 +56,14 @@ public class MainActivity extends ButterKnifeActivity {
         scan();
     }
 
-    @OnClick(R.id.departRecord)
-    public void departRecordOnClick() {
+    @OnClick(R.id.departInput)
+    public void departInputOnClick() {
         isDepartScan = true;
         showTeamNoInputDialog();
     }
 
-    @OnClick(R.id.arriveRecord)
-    public void arriveRecordOnClick() {
+    @OnClick(R.id.arriveInput)
+    public void arriveInputOnClick() {
         isDepartScan = false;
         showTeamNoInputDialog();
     }
@@ -99,6 +100,11 @@ public class MainActivity extends ButterKnifeActivity {
         recordSyncer.sync();
     }
 
+    @OnClick(R.id.statRecord)
+    public void statRecordOnClick() {
+        startActivity(RecordStatActivity.class);
+    }
+
 
     // =================== scan ===================
 
@@ -131,11 +137,13 @@ public class MainActivity extends ButterKnifeActivity {
     private void onDepartScanFinish(final String teamNo) {
         RecordDeparter recordDeparter = new RecordDeparter();
         recordDeparter.depart(teamNo);
+        scan();
     }
 
     private void onArriveScanFinish(final String teamNo) {
         RecordArriver recordArriver = new RecordArriver();
         recordArriver.arrive(teamNo);
+        scan();
     }
 
 

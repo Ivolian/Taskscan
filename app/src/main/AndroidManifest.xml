@@ -29,6 +29,10 @@
             android:screenOrientation="portrait" />
 
         <activity
+            android:name=".record.RecordStatActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".record.RecordDisplayActivity"
             android:screenOrientation="portrait" />
 

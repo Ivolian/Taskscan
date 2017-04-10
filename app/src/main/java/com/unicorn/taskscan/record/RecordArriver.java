@@ -29,6 +29,7 @@ public class RecordArriver {
             return;
         }
         record.setArriveTime(new Date().getTime());
+        record.setUsedTime(record.getArriveTime()- record.getDepartTime());
         record.setIsupt(1);
         record.setAccount(ConfigUtils.getAccount());
         RecordHelper.getRecordDao().update(record);

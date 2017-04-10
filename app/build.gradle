@@ -38,9 +38,9 @@ dependencies {
     provided 'com.f2prateek.dart:dart-processor:2.0.1'
     compile 'com.wada811:android-material-design-colors:3.0.0'
     compile 'com.android.volley:volley:1.0.0'
-    compile 'org.greenrobot:greendao:3.2.0'
+    compile 'org.greenrobot:greendao:3.2.2'
     debugCompile 'im.dino:dbinspector:3.3.0@aar'
-    compile 'com.journeyapps:zxing-android-embedded:3.3.0'
+    compile 'com.journeyapps:zxing-android-embedded:3.5.0'
     compile 'com.rengwuxian.materialedittext:library:2.1.4'
     compile "com.mikepenz:iconics-core:2.8.1@aar"
     compile 'com.mikepenz:ionicons-typeface:2.0.1.2@aar'
@@ -51,4 +51,6 @@ dependencies {
     compile 'net.danlew:android.joda:2.9.4.2'
     compile 'com.google.code.gson:gson:2.7'
     compile 'com.afollestad.material-dialogs:core:0.9.0.2'
+    compile 'com.android.support:recyclerview-v7:24.2.1'
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.9'
 }

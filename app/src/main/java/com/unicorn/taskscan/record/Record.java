@@ -38,11 +38,14 @@ public class Record {
     // 到达时间
     private Long arriveTime;
 
-    @Generated(hash = 2050024337)
+    // 用时（毫秒）
+    private Long usedTime;
+
+    @Generated(hash = 1828074077)
     public Record(String teamId, @NotNull String teamName, @NotNull String teamNo,
             @NotNull String lineNo, @NotNull String matchId,
             @NotNull String matchName, @NotNull Integer isupt, String account,
-            Long departTime, Long arriveTime) {
+            Long departTime, Long arriveTime, Long usedTime) {
         this.teamId = teamId;
         this.teamName = teamName;
         this.teamNo = teamNo;
@@ -53,6 +56,7 @@ public class Record {
         this.account = account;
         this.departTime = departTime;
         this.arriveTime = arriveTime;
+        this.usedTime = usedTime;
     }
 
     @Generated(hash = 477726293)
@@ -137,6 +141,14 @@ public class Record {
 
     public void setIsupt(Integer isupt) {
         this.isupt = isupt;
+    }
+
+    public Long getUsedTime() {
+        return this.usedTime;
+    }
+
+    public void setUsedTime(Long usedTime) {
+        this.usedTime = usedTime;
     }
 
 }
