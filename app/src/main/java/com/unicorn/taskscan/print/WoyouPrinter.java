@@ -76,7 +76,10 @@ public class WoyouPrinter {
                 try {
                     woyouService.setFontSize(24, callback);
                     woyouService.setAlignment(0, callback);
+                    woyouService.printText(record.getMatchName() + "\n", callback);
+                    woyouService.printText("----------------------------" + "\n", callback);
                     woyouService.printText("队伍编号：" + record.getTeamNo() + "\n", callback);
+                    woyouService.printText("队伍名称：" + record.getTeamName() + "\n", callback);
                     woyouService.printText("出发时间：" + DateUtils.getDateString(record.getDepartTime()) + "\n", callback);
                     woyouService.printText("到达时间：" + DateUtils.getDateString(record.getArriveTime()) + "\n", callback);
                     woyouService.printText("总计耗时：" + DateUtils.getDiff(record) + "\n", callback);

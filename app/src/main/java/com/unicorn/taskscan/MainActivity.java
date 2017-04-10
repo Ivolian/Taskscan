@@ -2,8 +2,12 @@ package com.unicorn.taskscan;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.InputType;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.unicorn.taskscan.base.ButterKnifeActivity;
@@ -49,6 +53,39 @@ public class MainActivity extends ButterKnifeActivity {
     public void arriveScanOnClick() {
         isDepartScan = false;
         scan();
+    }
+
+    @OnClick(R.id.departRecord)
+    public void departRecordOnClick() {
+        isDepartScan = true;
+        showTeamNoInputDialog();
+    }
+
+    @OnClick(R.id.arriveRecord)
+    public void arriveRecordOnClick() {
+        isDepartScan = false;
+        showTeamNoInputDialog();
+    }
+
+    private String teamNo = "";
+
+    private void showTeamNoInputDialog() {
+        new MaterialDialog.Builder(this)
+                .title("输入队伍编号")
+                .inputType(InputType.TYPE_CLASS_TEXT)
+                .input("", "", new MaterialDialog.InputCallback() {
+                    @Override
+                    public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+                        teamNo = input.toString();
+                    }
+                })
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        onScanFinish(teamNo);
+                    }
+                })
+                .show();
     }
 
     @OnClick(R.id.queryRecord)
