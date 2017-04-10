@@ -51,6 +51,7 @@ public class RecordHelper {
         List<Record> records = recordDao.queryBuilder()
                 .where(RecordDao.Properties.LineNo.eq(lineNo))
                 .orderAsc(RecordDao.Properties.UsedTime)
+                .limit(10)
                 .list();
         return records;
     }

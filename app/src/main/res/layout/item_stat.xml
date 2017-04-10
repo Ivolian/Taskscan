@@ -1,0 +1,74 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:layout_marginBottom="16dp"
+    android:background="@color/md_white"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tvTeamNo"
+        android:layout_width="64dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="01001"
+        android:textColor="@color/md_black"
+        android:textSize="16dp" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="64dp"
+        android:background="@color/md_grey_100" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvDepartTime"
+            android:layout_width="wrap_content"
+            android:text="出发时间:"
+            android:layout_height="wrap_content"
+            android:textColor="@color/md_grey_700"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/tvArriveTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/md_grey_700"
+            android:text="到达时间:"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/tvDiff"
+            android:text="总计耗时:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/md_grey_700"
+            android:textSize="13dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btnPrint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:background="@color/md_red_300"
+        android:paddingBottom="8dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp"
+        android:text="打印"
+        android:textColor="@color/md_white" />
+
+</LinearLayout>
+
+

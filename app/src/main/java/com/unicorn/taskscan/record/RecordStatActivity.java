@@ -1,5 +1,6 @@
 package com.unicorn.taskscan.record;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.support.v4.content.ContextCompat;
@@ -8,7 +9,7 @@ import android.widget.TextView;
 import com.rengwuxian.materialedittext.MaterialEditText;
 import com.unicorn.taskscan.R;
 import com.unicorn.taskscan.base.ButterKnifeActivity;
-import com.unicorn.taskscan.utils.ToastUtils;
+import com.unicorn.taskscan.utils.Constant;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -27,10 +28,9 @@ public class RecordStatActivity extends ButterKnifeActivity {
 
     @OnClick(R.id.btnQuery)
     public void btnQueryOnClick() {
-        ToastUtils.show("here");
-//        Intent intent = new Intent(this, RecordDisplayActivity.class);
-//        intent.putExtra(Constant.K_LINE_NO, getLineNo());
-//        startActivity(intent);
+        Intent intent = new Intent(this, RecordStatDisplayActivity.class);
+        intent.putExtra(Constant.K_LINE_NO, getLineNo());
+        startActivity(intent);
     }
 
 
