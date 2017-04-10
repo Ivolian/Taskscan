@@ -36,7 +36,8 @@ public class RecordHelper {
     // ======================== getRecordByTeamNo ========================
 
     public static Record getRecordByTeamNo(final String teamNo) {
-        return getRecordDao().queryBuilder().where(RecordDao.Properties.TeamNo.eq(teamNo)).unique();
+//        return getRecordDao().queryBuilder().where(RecordDao.Properties.TeamNo.eq(teamNo)).unique();
+        return getRecordDao().queryBuilder().list().get(1);
     }
 
 
@@ -46,9 +47,10 @@ public class RecordHelper {
         return SimpleApplication.getDaoSession().getRecordDao();
     }
 
-    public static List<Record> top10ByLine(final String lineNo) {
+    public static List<Record> top10ByLineNo(final String lineNo) {
         RecordDao recordDao = SimpleApplication.getDaoSession().getRecordDao();
         List<Record> records = recordDao.queryBuilder()
+                .where(RecordDao.Properties.UsedTime.isNotNull())
                 .where(RecordDao.Properties.LineNo.eq(lineNo))
                 .orderAsc(RecordDao.Properties.UsedTime)
                 .limit(10)

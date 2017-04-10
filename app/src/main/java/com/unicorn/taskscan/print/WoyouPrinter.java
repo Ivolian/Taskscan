@@ -11,6 +11,13 @@ import com.unicorn.taskscan.record.Record;
 import com.unicorn.taskscan.utils.DateUtils;
 import com.unicorn.taskscan.utils.ToastUtils;
 
+import org.joda.time.Interval;
+import org.joda.time.Period;
+import org.joda.time.format.PeriodFormatter;
+import org.joda.time.format.PeriodFormatterBuilder;
+
+import java.util.List;
+
 import woyou.aidlservice.jiuiv5.ICallback;
 import woyou.aidlservice.jiuiv5.IWoyouService;
 
@@ -91,4 +98,38 @@ public class WoyouPrinter {
         }).start();
     }
 
+    public static void printTop10(final List<Record> recordList
+    ) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    woyouService.setFontSize(24, callback);
+                    woyouService.setAlignment(0, callback);
+                    for (Record record : recordList) {
+                        String teamName = recordList.indexOf(record) + "." + record.getTeamName();
+                        Interval interval = new Interval(record.getDepartTime(), record.getArriveTime());
+                        Period period = interval.toPeriod();
+                        String usedTime = periodFormatter.print(period);
+                        woyouService.printText(teamName + " " + usedTime + "\n", callback);
+                    }
+                    woyouService.lineWrap(4, callback);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+    private static PeriodFormatter periodFormatter = new PeriodFormatterBuilder()
+            .printZeroAlways()
+            .minimumPrintedDigits(2)
+            .appendHours()
+            .appendSeparator(":")
+            .minimumPrintedDigits(2)
+            .appendMinutes()
+            .appendSeparator(":")
+            .minimumPrintedDigits(2)
+            .appendSeconds()
+            .toFormatter();
 }

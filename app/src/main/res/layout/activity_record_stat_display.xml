@@ -30,12 +30,25 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="48dp"
             android:layout_weight="1"
             android:gravity="center"
             android:text="成绩统计"
             android:textColor="@color/md_white"
             android:textSize="18dp" />
+
+        <FrameLayout
+            android:id="@+id/print"
+            android:layout_width="48dp"
+            android:layout_height="48dp">
+
+            <com.mikepenz.iconics.view.IconicsImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_gravity="center"
+                app:iiv_color="@color/md_white"
+                app:iiv_icon="ion-ios-printer" />
+
+        </FrameLayout>
 
     </LinearLayout>
 
