@@ -8,13 +8,13 @@ import android.widget.TextView;
 
 import com.rengwuxian.materialedittext.MaterialEditText;
 import com.unicorn.taskscan.R;
-import com.unicorn.taskscan.base.ButterKnifeActivity;
+import com.unicorn.taskscan.base.BaseAct;
 import com.unicorn.taskscan.utils.Constant;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class RecordStatActivity extends ButterKnifeActivity {
+public class RecordStatAct extends BaseAct {
 
     @Override
     protected int getLayoutResID() {
@@ -28,7 +28,7 @@ public class RecordStatActivity extends ButterKnifeActivity {
 
     @OnClick(R.id.btnQuery)
     public void btnQueryOnClick() {
-        Intent intent = new Intent(this, RecordStatDisplayActivity.class);
+        Intent intent = new Intent(this, RecordStatDisplayAct.class);
         intent.putExtra(Constant.K_LINE_NO, getLineNo());
         startActivity(intent);
     }

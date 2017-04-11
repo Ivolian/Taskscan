@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.rengwuxian.materialedittext.MaterialEditText;
 import com.unicorn.taskscan.R;
-import com.unicorn.taskscan.base.ButterKnifeActivity;
+import com.unicorn.taskscan.base.BaseAct;
 import com.unicorn.taskscan.utils.Constant;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
@@ -18,7 +18,7 @@ import java.util.Arrays;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class RecordQueryActivity extends ButterKnifeActivity {
+public class RecordQueryAct extends BaseAct {
 
     @Override
     protected int getLayoutResID() {
@@ -40,7 +40,7 @@ public class RecordQueryActivity extends ButterKnifeActivity {
 
     @OnClick(R.id.btnQuery)
     public void btnQueryOnClick() {
-        Intent intent = new Intent(this, RecordDisplayActivity.class);
+        Intent intent = new Intent(this, RecordDisplayAct.class);
         intent.putExtra(Constant.K_TEAM_NO, getTeamNo());
         intent.putExtra(Constant.K_LINE_NO, getLineNo());
         intent.putExtra(Constant.K_IS_ARRIVAL, getIsArrival());

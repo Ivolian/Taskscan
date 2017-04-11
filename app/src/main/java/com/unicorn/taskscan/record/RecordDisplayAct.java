@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import com.f2prateek.dart.InjectExtra;
 import com.unicorn.taskscan.R;
 import com.unicorn.taskscan.SimpleApplication;
-import com.unicorn.taskscan.base.ButterKnifeActivity;
+import com.unicorn.taskscan.base.BaseAct;
 import com.unicorn.taskscan.utils.ConfigUtils;
 import com.unicorn.taskscan.utils.Constant;
 
@@ -17,7 +17,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class RecordDisplayActivity extends ButterKnifeActivity {
+public class RecordDisplayAct extends BaseAct {
 
     @Override
     protected int getLayoutResID() {

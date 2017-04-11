@@ -10,19 +10,19 @@ import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-import com.unicorn.taskscan.base.ButterKnifeActivity;
+import com.unicorn.taskscan.base.BaseAct;
 import com.unicorn.taskscan.print.WoyouPrinter;
 import com.unicorn.taskscan.record.RecordArriver;
 import com.unicorn.taskscan.record.RecordCleaner;
 import com.unicorn.taskscan.record.RecordDeparter;
 import com.unicorn.taskscan.record.RecordDownloader;
-import com.unicorn.taskscan.record.RecordQueryActivity;
-import com.unicorn.taskscan.record.RecordStatActivity;
+import com.unicorn.taskscan.record.RecordQueryAct;
+import com.unicorn.taskscan.record.RecordStatAct;
 import com.unicorn.taskscan.record.RecordSyncer;
 
 import butterknife.OnClick;
 
-public class MainActivity extends ButterKnifeActivity {
+public class MainActivity extends BaseAct {
 
     @Override
     protected int getLayoutResID() {
@@ -91,7 +91,7 @@ public class MainActivity extends ButterKnifeActivity {
 
     @OnClick(R.id.queryRecord)
     public void queryRecordOnClick() {
-        startActivity(RecordQueryActivity.class);
+        startActivity(RecordQueryAct.class);
     }
 
     @OnClick(R.id.syncRecord)
@@ -102,7 +102,7 @@ public class MainActivity extends ButterKnifeActivity {
 
     @OnClick(R.id.statRecord)
     public void statRecordOnClick() {
-        startActivity(RecordStatActivity.class);
+        startActivity(RecordStatAct.class);
     }
 
 

@@ -7,12 +7,12 @@
 
     <application
         android:name=".SimpleApplication"
-        android:icon="@drawable/logo"
+        android:icon="@drawable/app_logo"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".LoginActivity"
+            android:name=".login.LoginAct"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,23 +21,27 @@
         </activity>
 
         <activity
-            android:name=".MainActivity"
+            android:name=".menu.MenuAct"
+            android:screenOrientation="portrait" />
+
+        <!--<activity-->
+            <!--android:name=".MainActivity"-->
+            <!--android:screenOrientation="portrait" />-->
+
+        <activity
+            android:name=".record.RecordQueryAct"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".record.RecordQueryActivity"
+            android:name=".record.RecordStatAct"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".record.RecordStatActivity"
+            android:name=".record.RecordDisplayAct"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".record.RecordDisplayActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name=".record.RecordStatDisplayActivity"
+            android:name=".record.RecordStatDisplayAct"
             android:screenOrientation="portrait" />
 
         <activity
