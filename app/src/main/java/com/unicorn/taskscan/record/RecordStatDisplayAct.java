@@ -9,6 +9,8 @@ import com.unicorn.taskscan.base.BaseAct;
 import com.unicorn.taskscan.print.WoyouPrinter;
 import com.unicorn.taskscan.utils.Constant;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -42,8 +44,11 @@ public class RecordStatDisplayAct extends BaseAct {
 
 
     @OnClick(R.id.print)
-    public void printOnClick(){
-        WoyouPrinter.printTop10(RecordHelper.top10ByLineNo(lineNo));
+    public void printOnClick() {
+        List<Record> records = RecordHelper.top10ByLineNo(lineNo);
+        if (records != null && records.size() != 0) {
+            WoyouPrinter.printTop10(records);
+        }
     }
 
 }

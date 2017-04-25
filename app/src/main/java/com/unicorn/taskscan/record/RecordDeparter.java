@@ -22,6 +22,10 @@ public class RecordDeparter {
             ToastUtils.show("未查询到队伍信息");
             return;
         }
+        if (record.getDepartTime() != null) {
+            ToastUtils.show("队伍" + record.getTeamNo() + "已出发");
+            return;
+        }
         record.setDepartTime(new Date().getTime());
         record.setIsupt(1);
         record.setAccount(ConfigUtils.getAccount());

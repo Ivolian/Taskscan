@@ -28,6 +28,10 @@ public class RecordArriver {
             ToastUtils.show("未查询到出发信息");
             return;
         }
+        if (record.getArriveTime() != null) {
+            ToastUtils.show("队伍" + record.getTeamNo() + "已到达");
+            return;
+        }
         record.setArriveTime(new Date().getTime());
         record.setUsedTime(record.getArriveTime()- record.getDepartTime());
         record.setIsupt(1);

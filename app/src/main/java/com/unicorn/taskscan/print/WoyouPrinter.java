@@ -100,6 +100,10 @@ public class WoyouPrinter {
 
     public static void printTop10(final List<Record> recordList
     ) {
+        if (woyouService == null) {
+            ToastUtils.show("尚未连接打印服务");
+            return;
+        }
         new Thread(new Runnable() {
             @Override
             public void run() {

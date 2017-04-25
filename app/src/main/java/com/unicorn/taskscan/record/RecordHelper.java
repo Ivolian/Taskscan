@@ -36,8 +36,7 @@ public class RecordHelper {
     // ======================== getRecordByTeamNo ========================
 
     public static Record getRecordByTeamNo(final String teamNo) {
-//        return getRecordDao().queryBuilder().where(RecordDao.Properties.TeamNo.eq(teamNo)).unique();
-        return getRecordDao().queryBuilder().list().get(1);
+        return getRecordDao().queryBuilder().where(RecordDao.Properties.TeamNo.eq(teamNo)).unique();
     }
 
 

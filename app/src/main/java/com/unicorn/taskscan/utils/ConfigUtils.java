@@ -2,9 +2,9 @@ package com.unicorn.taskscan.utils;
 
 public class ConfigUtils {
 
-    final static private String TEST_IP = "139.224.69.49";
+    final static private String TEST_IP = "139.196.107.169";
 
-    final static private String TEST_PORT = "9002";
+    final static private String TEST_PORT = "9003";
 
     public static String getBaseUrl() {
         return "http://" + TEST_IP + ":" + TEST_PORT;
