@@ -14,6 +14,7 @@ import com.unicorn.taskscan.R;
 import com.unicorn.taskscan.TeamNoInputAct;
 import com.unicorn.taskscan.base.BaseAct;
 import com.unicorn.taskscan.print.WoyouPrinter;
+import com.unicorn.taskscan.record.DataStatAct;
 import com.unicorn.taskscan.record.RecordArriver;
 import com.unicorn.taskscan.record.RecordCleaner;
 import com.unicorn.taskscan.record.RecordDeparter;
@@ -96,6 +97,9 @@ public class MenuAct extends BaseAct {
                         break;
                     case Menu.RECORD_STAT:
                         startActivity(RecordStatAct.class);
+                        break;
+                    case Menu.DATA_STAT:
+                        startActivity(DataStatAct.class);
                         break;
                 }
             }

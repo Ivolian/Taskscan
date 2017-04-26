@@ -9,7 +9,7 @@ import org.joda.time.Period;
 public class DateUtils {
 
     public static String getDateString(long time){
-        final String format = "yyyy-MM-dd HH:mm:ss";
+        final String format = "yyyy-MM-dd HH:mm:ss:SSS";
         return new DateTime(time).toString(format);
     }
 

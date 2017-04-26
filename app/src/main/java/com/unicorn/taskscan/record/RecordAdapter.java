@@ -70,7 +70,9 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.ViewHolder
     public void onBindViewHolder(ViewHolder holder, final int position) {
         Record record = records.get(position);
         holder.tvTeamNo.setText(record.getTeamNo());
-        holder.tvDepartTime.setText("出发时间: " + DateUtils.getDateString(record.getDepartTime()));
+        if (record.getDepartTime()!=null) {
+            holder.tvDepartTime.setText("出发时间: " + DateUtils.getDateString(record.getDepartTime()));
+        }
         Long arriveTime = record.getArriveTime();
         if (arriveTime != null) {
             holder.tvArriveTime.setText("到达时间: " + DateUtils.getDateString(arriveTime));

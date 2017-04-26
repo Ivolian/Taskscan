@@ -43,23 +43,25 @@ public class UserHelper {
         return user;
     }
 
-    public static @UserType String getUserType(String account){
-        if (account.startsWith(CHU_FA)){
+    public static
+    @UserType
+    String getUserType(String account) {
+        if (account.startsWith(CHU_FA)) {
             return CHU_FA;
         }
-        if (account.startsWith(DAO_DA)){
+        if (account.startsWith(DAO_DA)) {
             return DAO_DA;
         }
-        if (account.startsWith(ADMIN)){
+        if (account.startsWith(ADMIN)) {
             return ADMIN;
         }
         return OTHER;
     }
 
-     public static final String CHU_FA = "chufa";
+    public static final String CHU_FA = "chufa";
     public static final String DAO_DA = "daoda01";
     public static final String ADMIN = "admin";
-   public   static final String OTHER = "other";
+    public static final String OTHER = "other";
 
     @StringDef({CHU_FA, DAO_DA, ADMIN, OTHER})
     public @interface UserType {

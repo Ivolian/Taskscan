@@ -50,7 +50,7 @@ public class RecordHelper {
         RecordDao recordDao = SimpleApplication.getDaoSession().getRecordDao();
         List<Record> records = recordDao.queryBuilder()
                 .where(RecordDao.Properties.UsedTime.isNotNull())
-                .where(RecordDao.Properties.LineNo.eq(lineNo))
+                .where(RecordDao.Properties.TeamNo.like(lineNo+"%"))
                 .orderAsc(RecordDao.Properties.UsedTime)
                 .limit(10)
                 .list();

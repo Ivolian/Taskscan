@@ -149,7 +149,12 @@ public class RecordSyncer {
         if (dateString == null) {
             return null;
         }
+        if (dateString.equals("null")) {
+            return null;
+        }
+        // todo
         DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
+//        DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss:SSS");
         DateTime dateTime = dateTimeFormatter.parseDateTime(dateString);
         return dateTime.getMillis();
     }

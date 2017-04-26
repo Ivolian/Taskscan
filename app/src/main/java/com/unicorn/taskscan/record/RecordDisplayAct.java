@@ -7,7 +7,6 @@ import com.f2prateek.dart.InjectExtra;
 import com.unicorn.taskscan.R;
 import com.unicorn.taskscan.SimpleApplication;
 import com.unicorn.taskscan.base.BaseAct;
-import com.unicorn.taskscan.utils.ConfigUtils;
 import com.unicorn.taskscan.utils.Constant;
 
 import org.greenrobot.greendao.query.QueryBuilder;
@@ -40,7 +39,7 @@ public class RecordDisplayAct extends BaseAct {
     private List<Record> queryRecords() {
         RecordDao recordDao = SimpleApplication.getDaoSession().getRecordDao();
         QueryBuilder<Record> queryBuilder = recordDao.queryBuilder();
-        queryBuilder.where(RecordDao.Properties.Account.eq(ConfigUtils.getAccount()));
+//        queryBuilder.where(RecordDao.Properties.Account.eq(ConfigUtils.getAccount()));
         if (!teamNo.equals(Constant.EMPTY_STR)) {
             queryBuilder.where(RecordDao.Properties.TeamNo.eq(teamNo));
         }
@@ -52,6 +51,8 @@ public class RecordDisplayAct extends BaseAct {
         } else {
             queryBuilder.where(RecordDao.Properties.ArriveTime.isNull());
         }
+        queryBuilder.where(RecordDao.Properties.DepartTime.isNotNull());
+        queryBuilder.orderAsc(RecordDao.Properties.TeamNo);
         return queryBuilder.list();
     }
 

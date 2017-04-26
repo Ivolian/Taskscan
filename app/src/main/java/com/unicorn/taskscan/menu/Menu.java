@@ -11,6 +11,7 @@ class Menu {
     public static final String RECORD_QUERY = "成绩查询";
     public static final String CLEAR_RECORD = "清除数据";
     public static final String RECORD_STAT = "成绩统计";
+    public static final String DATA_STAT = "数据统计";
 
     //
 
