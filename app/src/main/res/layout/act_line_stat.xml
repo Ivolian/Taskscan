@@ -53,34 +53,11 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:padding="16dp">
-
-        <TextView
-            android:id="@+id/tvRecordNum"
-            android:textSize="15dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:layout_marginTop="4dp"
-            android:textSize="15dp"
-            android:id="@+id/tvDepartNum"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:layout_marginTop="4dp"
-            android:id="@+id/tvArriveNum"
-            android:layout_width="wrap_content"
-            android:textSize="15dp"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
+        android:layout_weight="1" />
 
 </LinearLayout>
 

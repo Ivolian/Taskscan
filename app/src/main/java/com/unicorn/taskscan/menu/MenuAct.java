@@ -13,8 +13,8 @@ import com.google.zxing.integration.android.IntentResult;
 import com.unicorn.taskscan.R;
 import com.unicorn.taskscan.TeamNoInputAct;
 import com.unicorn.taskscan.base.BaseAct;
+import com.unicorn.taskscan.line.LineStatAct;
 import com.unicorn.taskscan.print.WoyouPrinter;
-import com.unicorn.taskscan.record.data.DataStatAct;
 import com.unicorn.taskscan.record.RecordArriver;
 import com.unicorn.taskscan.record.RecordCleaner;
 import com.unicorn.taskscan.record.RecordDeparter;
@@ -99,7 +99,7 @@ public class MenuAct extends BaseAct {
                         startActivity(RecordStatAct.class);
                         break;
                     case Menu.DATA_STAT:
-                        startActivity(DataStatAct.class);
+                        startActivity(LineStatAct.class);
                         break;
                 }
             }

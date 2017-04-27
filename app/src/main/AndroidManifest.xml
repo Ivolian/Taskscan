@@ -49,7 +49,7 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".record.data.DataStatAct"
+            android:name=".line.LineStatAct"
             android:screenOrientation="portrait" />
 
         <activity
