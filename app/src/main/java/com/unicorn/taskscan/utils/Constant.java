@@ -6,6 +6,7 @@ public class Constant {
 
     public static final String ARRIVAL = "是";
 
+    public static final String NOT_ARRIVAL = "否";
 
     public static final String K_ACCOUNT = "account";
 

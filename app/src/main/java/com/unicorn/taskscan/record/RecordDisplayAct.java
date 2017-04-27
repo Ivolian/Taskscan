@@ -48,9 +48,13 @@ public class RecordDisplayAct extends BaseAct {
         }
         if (isArrival.equals(Constant.ARRIVAL)) {
             queryBuilder.where(RecordDao.Properties.ArriveTime.isNotNull());
-        } else {
+        } else if (isArrival.equals(Constant.NOT_ARRIVAL)) {
+            queryBuilder.where(RecordDao.Properties.DepartTime.isNotNull());
             queryBuilder.where(RecordDao.Properties.ArriveTime.isNull());
+        } else {
+            queryBuilder.where(RecordDao.Properties.DepartTime.isNotNull());
         }
+
         queryBuilder.where(RecordDao.Properties.DepartTime.isNotNull());
         queryBuilder.orderAsc(RecordDao.Properties.TeamNo);
         return queryBuilder.list();

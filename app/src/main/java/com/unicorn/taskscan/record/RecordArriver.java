@@ -18,13 +18,13 @@ public class RecordArriver {
     6、update记录完成之后，将本记录的isupt字段改成 1；
      */
 
-    public void arrive(final String teamNo){
+    public void arrive(final String teamNo) {
         Record record = RecordHelper.getRecordByTeamNo(teamNo);
-        if (record == null){
+        if (record == null) {
             ToastUtils.show("未查询到队伍信息");
             return;
         }
-        if (record.getDepartTime() == null){
+        if (record.getDepartTime() == null) {
             ToastUtils.show("未查询到出发信息");
             return;
         }
@@ -33,7 +33,7 @@ public class RecordArriver {
             return;
         }
         record.setArriveTime(new Date().getTime());
-        record.setUsedTime(record.getArriveTime()- record.getDepartTime());
+        record.setUsedTime(record.getArriveTime() - record.getDepartTime());
         record.setIsupt(1);
         record.setAccount(ConfigUtils.getAccount());
         RecordHelper.getRecordDao().update(record);

@@ -22,10 +22,7 @@ import com.unicorn.taskscan.record.RecordDownloader;
 import com.unicorn.taskscan.record.RecordQueryAct;
 import com.unicorn.taskscan.record.RecordStatAct;
 import com.unicorn.taskscan.record.RecordSyncer;
-import com.unicorn.taskscan.user.UserHelper;
 import com.unicorn.taskscan.utils.ConfigUtils;
-
-import java.util.List;
 
 import butterknife.BindView;
 
@@ -52,13 +49,8 @@ public class MenuAct extends BaseAct {
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setAdapter(menuAdapter = new MenuAdapter());
         recyclerView.setOverScrollMode(OVER_SCROLL_NEVER);
-        menuAdapter.setNewData(menus());
+        menuAdapter.setNewData(MenuProvider.provide(ConfigUtils.getUserType()));
         setOnItemClickListener();
-    }
-
-    private List<Menu> menus() {
-        String userType = UserHelper.getUserType(ConfigUtils.getAccount());
-        return MenuProvider.provide(userType);
     }
 
     private void setOnItemClickListener() {
