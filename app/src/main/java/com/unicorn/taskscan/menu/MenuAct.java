@@ -13,7 +13,7 @@ import com.google.zxing.integration.android.IntentResult;
 import com.unicorn.taskscan.R;
 import com.unicorn.taskscan.TeamNoInputAct;
 import com.unicorn.taskscan.base.BaseAct;
-import com.unicorn.taskscan.line.LineStatAct;
+import com.unicorn.taskscan.lintStat.LineStatAct;
 import com.unicorn.taskscan.print.WoyouPrinter;
 import com.unicorn.taskscan.record.RecordArriver;
 import com.unicorn.taskscan.record.RecordCleaner;

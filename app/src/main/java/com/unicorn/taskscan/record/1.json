@@ -332,39 +332,6 @@
       "createtime": "2016-10-20 23:37:01",
       "timeline": "0.0025",
       "status": "0"
-    },
-    {
-      "teamid": "356d6328-d192-42bb-b7bb-4e642258fd64",
-      "match_id": "6a61b95b-2d5d-4373-abaf-bf4e4c438800",
-      "userno": "chufa01",
-      "teamno": "30001",
-      "starttime": "2017-04-27 09:56:26",
-      "settime": null,
-      "createtime": "2017-04-27 09:53:36",
-      "timeline": null,
-      "status": "0"
-    },
-    {
-      "teamid": "81b9d87d-8cc5-40d9-917a-5c22858a3556",
-      "match_id": "6a61b95b-2d5d-4373-abaf-bf4e4c438800",
-      "userno": "chufa01",
-      "teamno": "30002",
-      "starttime": "2017-04-27 09:52:25",
-      "settime": null,
-      "createtime": "2017-04-27 09:53:36",
-      "timeline": null,
-      "status": "0"
-    },
-    {
-      "teamid": "35f21546-ce96-4682-9b86-3cf06009e8a3",
-      "match_id": "6a61b95b-2d5d-4373-abaf-bf4e4c438800",
-      "userno": "chufa01",
-      "teamno": "30003",
-      "starttime": "2017-04-27 09:52:32",
-      "settime": null,
-      "createtime": "2017-04-27 09:53:36",
-      "timeline": null,
-      "status": "0"
     }
   ]
 }

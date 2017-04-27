@@ -1,4 +1,4 @@
-package com.unicorn.taskscan.line;
+package com.unicorn.taskscan.lintStat;
 
 import android.database.Cursor;
 
