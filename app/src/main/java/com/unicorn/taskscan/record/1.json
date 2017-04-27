@@ -338,9 +338,9 @@
       "match_id": "6a61b95b-2d5d-4373-abaf-bf4e4c438800",
       "userno": "chufa01",
       "teamno": "30001",
-      "starttime": "2017-04-26 17:38:01",
+      "starttime": "2017-04-27 09:56:26",
       "settime": null,
-      "createtime": "2017-04-26 17:38:25",
+      "createtime": "2017-04-27 09:53:36",
       "timeline": null,
       "status": "0"
     },
@@ -349,9 +349,9 @@
       "match_id": "6a61b95b-2d5d-4373-abaf-bf4e4c438800",
       "userno": "chufa01",
       "teamno": "30002",
-      "starttime": "2017-04-26 17:38:11",
+      "starttime": "2017-04-27 09:52:25",
       "settime": null,
-      "createtime": "2017-04-26 17:38:25",
+      "createtime": "2017-04-27 09:53:36",
       "timeline": null,
       "status": "0"
     },
@@ -360,31 +360,9 @@
       "match_id": "6a61b95b-2d5d-4373-abaf-bf4e4c438800",
       "userno": "chufa01",
       "teamno": "30003",
-      "starttime": "2017-04-26 13:32:03",
+      "starttime": "2017-04-27 09:52:32",
       "settime": null,
-      "createtime": "2017-04-26 13:32:45",
-      "timeline": null,
-      "status": "0"
-    },
-    {
-      "teamid": "60b9fa6a-4126-40d8-9112-700e387f684d",
-      "match_id": "6a61b95b-2d5d-4373-abaf-bf4e4c438800",
-      "userno": "chufa01",
-      "teamno": "30004",
-      "starttime": "2017-04-26 13:32:22",
-      "settime": null,
-      "createtime": "2017-04-26 13:32:45",
-      "timeline": null,
-      "status": "0"
-    },
-    {
-      "teamid": "85be6a23-6b36-468b-8c85-fa25ba715c1a",
-      "match_id": "6a61b95b-2d5d-4373-abaf-bf4e4c438800",
-      "userno": "chufa01",
-      "teamno": "30005",
-      "starttime": "2017-04-26 13:32:24",
-      "settime": null,
-      "createtime": "2017-04-26 13:32:45",
+      "createtime": "2017-04-27 09:53:36",
       "timeline": null,
       "status": "0"
     }

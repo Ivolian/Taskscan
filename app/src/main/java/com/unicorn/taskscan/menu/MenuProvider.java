@@ -42,7 +42,8 @@ class MenuProvider {
                         new Menu(Menu.MATCH_DOWNLOAD, R.drawable.icon5),
                         new Menu(Menu.RECORD_QUERY, R.drawable.icon4),
                         new Menu(Menu.CLEAR_RECORD, R.drawable.icon6),
-                        new Menu(Menu.RECORD_STAT, R.drawable.icon4)
+                        new Menu(Menu.RECORD_STAT, R.drawable.icon4),
+                        new Menu(Menu.DATA_STAT, R.drawable.icon4)
                 );
             case UserHelper.OTHER:
                 return menus;

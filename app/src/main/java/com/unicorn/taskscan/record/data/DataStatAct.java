@@ -1,9 +1,11 @@
-package com.unicorn.taskscan.record;
+package com.unicorn.taskscan.record.data;
 
 import android.widget.TextView;
 
 import com.unicorn.taskscan.R;
 import com.unicorn.taskscan.base.BaseAct;
+import com.unicorn.taskscan.record.RecordDao;
+import com.unicorn.taskscan.record.RecordHelper;
 
 import butterknife.BindView;
 import butterknife.OnClick;
